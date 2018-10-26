@@ -719,433 +719,48 @@ class Helper {
      * FUNCIONES DEL INERENTES AL SITIO
      * ****************************** */
 
-    public function urlInicio($lng) {
-        $url = URL . 'en/';
-        if ($lng === 'es') {
-            $url = URL . 'es/';
-        }
-        return $url;
-    }
-
-    public function Breadcrumbs($url) {
-        $controlador = $url[1];
-        $sqlMenuInicio = $this->db->select("select " . $this->idioma . "_texto from menu where controlador = '/'");
-        if ($controlador != 'pagina') {
-            $sqlControlador = $this->db->select("select controlador, metodo, " . $this->idioma . "_texto from menu where controlador = '$controlador'");
-            $seccion = utf8_encode($sqlControlador[0][$this->idioma . '_texto']);
-        } else {
-            $idPagina = $url[3];
-            $sqlControlador = $this->db->select("select m.controlador, m.metodo, m." . $this->idioma . "_texto from menu m
-                                                LEFT JOIN pagina p on p.id_menu = m.id where p.id = '$idPagina'");
-            $seccion = utf8_encode($sqlControlador[0][$this->idioma . '_texto']);
-        }
-        $data = '<div id="Breadcrumbs">
-                    <div class="container">
-                        <div class="column one">
-                            <ul class="breadcrumbs">
-                                <li class="home"><i class="fa fa-home"></i><a href="' . $this->urlInicio($this->idioma) . '">' . utf8_encode($sqlMenuInicio[0][$this->idioma . '_texto']) . '</a><span><i class="fa fa-angle-right"></i></span></li>
-                                <li><a href="#">' . $seccion . '</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>';
-        return $data;
-    }
-
-    public function cargarMenu($idioma) {
-        $lng = $idioma;
-        $sql = $this->db->select("SELECT id, id_padre, " . $lng . "_texto, controlador, metodo, funcion from menu where estado = 1 ORDER BY orden ASC");
-        $menu = '<ul id="megaUber" class="megaMenu">';
-
-        $sqlProductos = $this->db->select("SELECT
-                                                                id,
-                                                                " . $lng . "_nombre as nombre
-                                                        FROM
-                                                                productos
-                                                        WHERE
-                                                                estado = 1
-                                                        ORDER BY
-                                                                orden ASC;");
-        #para el menu de certificaciones
-        $sqlCertificaciones = $this->db->select("SELECT
-                                                        id,
-                                                        " . $lng . "_menu as menu
-                                                FROM
-                                                        certificaciones
-                                                WHERE
-                                                        estado = 1
-                                                ORDER BY
-                                                        orden ASC");
-        #para el menu de logistica
-        $sqlLogistica = $this->db->select("SELECT
-                                                        id,
-                                                        " . $lng . "_menu as menu
-                                                FROM
-                                                        logistica
-                                                WHERE
-                                                        estado = 1
-                                                ORDER BY
-                                                        orden ASC");
-        foreach ($sql as $item) {
-            $controlador = str_replace('/', '', $item['controlador']);
-            $url = '#';
-            if (($controlador != 'products') && ($controlador != 'certifications') && ($controlador != 'logistics')) {
-                $metodo = '';
-                if ($item['metodo'] != 'index') {
-                    $metodo = $item['metodo'] . '/';
-                }
-                if ($controlador != 'pagina') {
-                    $url = $this->urlInicio($lng) . $controlador . '/' . $metodo;
-                } else {
-                    $sqlPagina = $this->db->select("SELECT id FROM `pagina` where id_menu = " . $item['id']);
-                    $url = $this->urlInicio($lng) . 'pagina/contenido/' . $sqlPagina[0]['id'] . '/' . $this->cleanUrl($item[$lng . '_texto']);
-                }
-            }
-            $classSubMenu = '';
-            switch ($item['controlador']) {
-                case 'products':
-                    $classSubMenu = 'current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children mega-with-sub ss-nav-menu-item-0 ss-nav-menu-item-depth-0 ss-nav-menu-reg um-flyout-align-center';
-                    break;
-                case 'certifications':
-                    $classSubMenu = 'current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children mega-with-sub ss-nav-menu-item-0 ss-nav-menu-item-depth-0 ss-nav-menu-reg um-flyout-align-center';
-                    break;
-                case 'logistics':
-                    $classSubMenu = 'current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children mega-with-sub ss-nav-menu-item-0 ss-nav-menu-item-depth-0 ss-nav-menu-reg um-flyout-align-center';
-                    break;
-            }
-            $menu .= '  <li class="menu-item ' . $classSubMenu . '"><a href="' . $url . '"><span class="wpmega-link-title">' . utf8_encode($item[$lng . '_texto']) . '</span></a>';
-            switch ($item['controlador']) {
-                case 'products':
-                    $menu .= '<ul class="sub-menu sub-menu-1">';
-                    foreach ($sqlProductos as $producto) {
-                        $menu .= '<li class="menu-item ss-nav-menu-item-depth-1"><a href="' . $this->urlInicio($lng) . 'products/product/' . $producto['id'] . '/' . $this->cleanUrl(utf8_encode($producto['nombre'])) . '"><span class="wpmega-link-title"> ' . utf8_encode($producto['nombre']) . '</span></a></li>';
-                    }
-                    $menu .= '</ul>';
-                    break;
-                case 'certifications':
-                    $menu .= '<ul class="sub-menu sub-menu-1">';
-                    foreach ($sqlCertificaciones as $certificacion) {
-                        $menu .= '<li class="menu-item ss-nav-menu-item-depth-1"><a href="' . $this->urlInicio($lng) . 'certifications/certification/' . $certificacion['id'] . '/' . $this->cleanUrl(utf8_encode($certificacion['menu'])) . '"><span class="wpmega-link-title"> ' . utf8_encode($certificacion['menu']) . '</span></a></li>';
-                    }
-                    $menu .= '</ul>';
-                    break;
-                case 'logistics':
-                    $menu .= '<ul class="sub-menu sub-menu-1">';
-                    foreach ($sqlLogistica as $logistica) {
-                        $menu .= '<li class="menu-item ss-nav-menu-item-depth-1"><a href="' . $this->urlInicio($lng) . 'logistics/logistic/' . $logistica['id'] . '/' . $this->cleanUrl(utf8_encode($logistica['menu'])) . '"><span class="wpmega-link-title"> ' . utf8_encode($logistica['menu']) . '</span></a></li>';
-                    }
-                    $menu .= '</ul>';
-                    break;
-            }
-            $menu .= '</li>';
-        }
-        $menu .= '   </ul>';
-        return $menu;
-    }
-
-    public function cargarRedesSociales() {
-        $sql = $this->db->select("SELECT descripcion, fontawesome, url FROM `redes` where estado = 1 ORDER BY orden ASC");
-        $div = '<div class="social">
-                    <ul>';
-        foreach ($sql as $item) {
-            $div .= '   <li class="' . strtolower(utf8_encode($item['descripcion'])) . '"><a target="_blank" href="' . $item['url'] . '" title="' . utf8_encode($item['descripcion']) . '"><i class="' . $item['fontawesome'] . ' redes-icon" aria-hidden="true"></i></a></li>';
-        }
-        $div .= '   </ul>
-                </div>';
-        return $div;
-    }
-
-    public function cargarCertificacionesPie($lng) {
-        $sql = $this->db->select("SELECT
-                                        id,
-                                        " . $lng . "_menu as menu,
-                                        img_certificacion
-                                FROM
-                                        certificaciones
-                                WHERE
-                                        estado = 1
-                                ORDER BY
-                                        orden ASC");
-        $li = '<ul>';
-        foreach ($sql as $item) {
-            $li .= '<li>
-                        <div class="slide-wrapper">
-                            <a href="' . $this->urlInicio($lng) . 'certifications/certification/' . $item['id'] . '/' . $this->cleanUrl(utf8_encode($item['menu'])) . '" title="' . utf8_encode($item['menu']) . '"><img width="200" height="65" src="' . URL . 'public/images/certificaciones/' . utf8_encode($item['img_certificacion']) . '" class="scale-with-grid wp-post-image img-footer-certification" alt="' . utf8_encode($item['menu']) . '"/></a>
-                        </div>
-                    </li>';
-        }
-        $li .= '</ul>';
-        return $li;
-    }
-
-    public function getMetaTags($lng, $controlador) {
-        $data = array();
-        if (!empty($controlador[1])) {
-            $controller = $controlador[1];
-        } else {
-            $controller = '/';
-        }
-        $sql = $this->db->select("SELECT mt." . $lng . "_descripcion as description,
-                                        mt." . $lng . "_keywords as keywords,
-                                        mt." . $lng . "_title as title
-                                FROM menu m
-                                LEFT JOIN meta_tags mt on mt.id_menu = m.id
-                                where m.controlador = '" . $controller . "'");
-        $data = array(
-            'description' => utf8_encode($sql[0]['description']),
-            'keywords' => utf8_encode($sql[0]['keywords']),
-            'title' => utf8_encode($sql[0]['title'])
-        );
-        return $data;
-    }
-
-    public function footer_content($lng) {
-        $textoMenuNosotros = $this->db->select("select " . $lng . "_texto as texto from menu where id = 2");
-        $aboutus = $this->db->select("SELECT " . $lng . "_contenido as contenido FROM nosotros where id = 1;");
-        $textoFooter = $this->db->select("SELECT " . $lng . "_footer as texto from blog_header where id = 1");
-        $ultimasEntradas = $this->db->select("SELECT
-                                                    id,
-                                                    " . $lng . "_titulo as titulo
-                                            FROM
-                                                    blog
-                                            WHERE
-                                                    estado = 1
-                                            ORDER BY
-                                                    fecha_blog DESC
-                                            LIMIT 3");
-        $data = array(
-            'titulo_nosotros' => utf8_encode($textoMenuNosotros[0]['texto']),
-            'nosotros' => substr(strip_tags(utf8_encode($aboutus[0]['contenido'])), 0, 300),
-            'titulo_blog' => utf8_encode($textoFooter[0]['texto']),
-            'entradas' => $ultimasEntradas
-        );
-        return $data;
-    }
-
-    public function getDirecciones() {
-        $sql = $this->db->select("SELECT
-                                        direccion,
-                                        ciudad,
-                                        pais,
-                                        telefono,
-                                        email,
-                                        latitud,
-                                        longitud,
-                                        zoom,
-                                        mappin
-                                FROM
-                                        datos_contacto
-                                WHERE
-                                        id = 1");
-        return $sql[0];
-    }
-
-    public function cargarSlider($lng) {
-        $sql = $this->db->select("SELECT
-                                        imagen,
-                                        " . $lng . "_texto1 as texto1,
-                                        " . $lng . "_texto2 as texto2,
-                                        " . $lng . "_boton as boton,
-                                        data_x_1,
-                                        data_x_2,
-                                        data_y_1,
-                                        data_y_2,
-                                        data_speed_1,
-                                        data_speed_2,
-                                        data_start_1,
-                                        data_start_2,
-                                        boton_x,
-                                        boton_y,
-                                        boton_speed,
-                                        boton_start,
-                                        " . $lng . "_url as url
-                                FROM
-                                        slider
-                                WHERE
-                                        estado = 1
-                                ORDER BY
-                                        orden ASC");
+    public function cargar_menu($lng) {
+        $sql = $this->db->select("SELECT " . $lng . "_menu as menu, id_menu FROM menu where estado = 1 ORDER BY orden ASC;");
         return $sql;
     }
 
-    public function cargarSeccion1($lng) {
-        $sql = $this->db->select("SELECT
-                                        " . $lng . "_titulo as titulo,
-                                        " . $lng . "_contenido as contenido,
-                                        estado
-                                FROM
-                                        index_seccion1
-                                WHERE
-                                        id = 1
-                                AND estado = 1");
-        return (!empty($sql)) ? $sql[0] : NULL;
+    public function cargar_slider($lng) {
+        $sql = $this->db->select("SELECT imagen, " . $lng . "_titulo as titulo, " . $lng . "_descripcion as descripcion FROM `slider` WHERE estado = 1 ORDER BY orden ASC;");
+        return $sql;
     }
 
-    public function cargarSeccion2($lng) {
-        $sql = $this->db->select("SELECT
-                                        imagen,
-                                        " . $lng . "_contenido as contenido,
-                                        " . $lng . "_boton as boton,
-                                        " . $lng . "_url as url
-                                FROM
-                                        index_seccion2
-                                WHERE
-                                        id = 1
-                                AND estado = 1");
-        return (!empty($sql)) ? $sql[0] : NULL;
-    }
-
-    public function cargarSeccion3($lng) {
-        $sql = $this->db->select("SELECT
-                                        " . $lng . "_titulo as titulo,
-                                        " . $lng . "_contenido as contenido,
-                                        imagen
-                                FROM
-                                        index_seccion3
-                                WHERE
-                                        id = 1
-                                AND estado = 1");
-        return (!empty($sql)) ? $sql[0] : NULL;
-    }
-
-    public function cargarSeccion4($lng) {
-        $sql = $this->db->select("SELECT
-                                        " . $lng . "_titulo as titulo,
-                                        " . $lng . "_contenido as contenido,
-                                        id_video_youtube as video
-                                FROM
-                                        index_seccion4
-                                WHERE
-                                        id = 1
-                                AND estado = 1");
-        return (!empty($sql)) ? $sql[0] : NULL;
-    }
-
-    public function cargarSeccion5($lng) {
-        $sql = $this->db->select("SELECT
-                                        " . $lng . "_titulo as titulo,
-                                        imagen
-                                FROM
-                                        index_seccion5
-                                WHERE
-                                        id = 1
-                                AND estado = 1");
-        return (!empty($sql)) ? $sql[0] : NULL;
-    }
-
-    public function cargarSeccion5_items($lng) {
-        $sql = $this->db->select("SELECT
-                                        " . $lng . "_item as item
-                                FROM
-                                        index_seccion5_items
-                                WHERE
-                                        estado = 1 ORDER BY orden ASC");
-        return (!empty($sql)) ? $sql : NULL;
-    }
-
-    public function armaUrl($id, $tabla, $campo, $lng) {
-        $sql = $this->db->select("select $campo from $tabla where id = $id");
-        $tituloBlog = $this->cleanUrl(utf8_encode($sql[0][$campo]));
-        $url = URL . $lng . "/blog/post/$id/" . $tituloBlog;
-        return $url;
-    }
-
-    public function getActivePageAdmin($page) {
-        $dashboard = $inicio = $aboutus = $products = $blog = $quality = $certificactions = $logistics = $neopure = $listado = $busqueda = $contacto = $menu = $pagina = $redes = $logo = $direccion = $metatags = $usuarios = '';
-        switch ($page) {
-            case'inicio':
-                $inicio = 'class ="active"';
-                break;
-            case'aboutus':
-                $aboutus = 'class ="active"';
-                break;
-            case'products':
-                $products = 'class ="active"';
-                break;
-            case'certifications':
-                $certificactions = 'class ="active"';
-                break;
-            case'logistics':
-                $logistics = 'class ="active"';
-                break;
-            case'quality':
-                $quality = 'class ="active"';
-                break;
-            case'neopure':
-                $neopure = 'class ="active"';
-                break;
-            case'blog':
-                $blog = 'class ="active"';
-                $listado = 'class ="active"';
-                break;
-            case'busquedas':
-                $blog = 'class ="active"';
-                $busqueda = 'class ="active"';
-                break;
-            case'contacto':
-                $contacto = 'class ="active"';
-                break;
-            case'menu':
-                $menu = 'class ="active"';
-                break;
-            case'pagina':
-                $pagina = 'class ="active"';
-                break;
-            case'redes':
-                $redes = 'class ="active"';
-                break;
-            case'logo':
-                $logo = 'class ="active"';
-                break;
-            case'direccion':
-                $direccion = 'class ="active"';
-                break;
-            case'metatags':
-                $metatags = 'class ="active"';
-                break;
-            case'usuarios':
-                $usuarios = 'class ="active"';
-                break;
-            default :
-                $dashboard = 'class ="active"';
-                break;
+    public function cargar_conocenos($lng) {
+        $sqlSeccion1 = $this->db->select("SELECT " . $lng . "_titulo as titulo, " . $lng . "_contenido as contenido, estado FROM `conocenos_seccion1`;");
+        $sqlSeccion2 = $this->db->select("SELECT " . $lng . "_titulo as titulo, " . $lng . "_contenido as contenido, font_awesome FROM `conocenos_seccion2` where estado = 1;");
+        $sqlSeccion3 = $this->db->select("SELECT " . $lng . "_titulo as titulo, " . $lng . "_contenido as contenido, imagen FROM `conocenos_seccion3`;");
+        $dataSeccion2 = array();
+        foreach ($sqlSeccion2 as $item) {
+            array_push($dataSeccion2, $item);
         }
         $data = array(
-            'type' => 'success',
-            'paginas' => array(
-                'dashboard' => $dashboard,
-                'inicio' => $inicio,
-                'aboutus' => $aboutus,
-                'products' => $products,
-                'certificactions' => $certificactions,
-                'logistics' => $logistics,
-                'quality' => $quality,
-                'neopure' => $neopure,
-                'blog' => array(
-                    'blog' => $blog,
-                    'listado' => $listado,
-                    'busqueda' => $busqueda
-                ),
-                'contacto' => $contacto,
-                'menu' => $menu,
-                'pagina' => $pagina,
-                'redes' => $redes,
-                'logo' => $logo,
-                'direccion' => $direccion,
-                'metatags' => $metatags,
-                'usuarios' => $usuarios,
-            )
+            'estado' => $sqlSeccion1[0]['estado'],
+            'seccion1' => array(
+                'titulo' => $sqlSeccion1[0]['titulo'],
+                'contenido' => $sqlSeccion1[0]['contenido']
+            ),
+            'seccion2' => $dataSeccion2,
+            'seccion3' => array(
+                'titulo' => $sqlSeccion3[0]['titulo'],
+                'contenido' => $sqlSeccion3[0]['contenido'],
+                'imagen' => $sqlSeccion3[0]['imagen']
+            ),
         );
         return $data;
     }
 
-    public function retornarIdioma() {
-        return $this->idioma;
+    public function cargar_frases($lng) {
+        $sql = $this->db->select("SELECT " . $lng . "_frase as frase, autor FROM `frases` where estado = 1;");
+        return $sql;
     }
 
-    public function getLogos() {
-        $sql = $this->db->select("select logo from logo where id = 1");
-        return $sql[0]['logo'];
+    public function cargar_trabajosEncabezados($lng) {
+        $sql = $this->db->select("SELECT " . $lng . "_titulo as titulo, " . $lng . "_contenido as contenido, estado FROM `trabajo_encabezado`;");
+        return $sql[0];
     }
 
 }

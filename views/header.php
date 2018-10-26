@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><?= $this->title; ?></title>
-        <link rel="stylesheet" href="css/spinner.css">
+        <link rel="stylesheet" href="<?= URL; ?>public/css/spinner.css">
         <!-- BOOTSTRAP -->
         <link href="<?= URL; ?>public/css/bootstrap.min.css" rel="stylesheet">
         <!-- FONT AWESOME -->
@@ -59,13 +59,9 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-crafty-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#HOME">HELLO</a> </li>
-                                <li><a href="#ABOUT">ABOUT</a> </li>
-                                <li><a href="#PORTFOLIO">PORTFOLIO</a> </li>
-                                <li><a href="#SERVICES">SERVICES</a> </li>
-                                <li><a href="#TEAM">TEAM</a> </li>
-                                <li><a href="#BLOG">BLOG</a> </li>
-                                <li><a href="#CONTACT">CONTACT</a> </li>
+                                <?php foreach ($this->menu as $menu): ?>
+                                    <li><a href="#<?= $menu['id_menu']; ?>"><?= utf8_encode($menu['menu']) ?></a></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </div>

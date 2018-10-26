@@ -1,41 +1,22 @@
 <!-- Home Slider Start -->
-
 <div class="slider">
     <div id="carousel-crafty-generic" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img class="image_slider_src" src="http://placehold.it/1920x1080">
-                <div class="overlay"></div>
-
-                <div class="container">
-                    <!-- 1 SLIDER TITLE AND DESC-->
-                    <h1 class="bounceInDown">HEY<span>!</span><br>We Are code cafe</h1>
-                    <p>Integer nec nulla bibendum, venenatis elit vel, vulputate nulla. Quisque lacinia nisi erat,
-                        <br>ut scelerisque augue pharetra et. Aliquam efficitur lacus eget.</p> 
-                </div> 
+        <?php
+        foreach ($this->slider as $key => $slider):
+            $active = ($key == 0) ? 'active' : '';
+            ?>
+            <div class="carousel-inner" role="listbox">
+                <div class="item <?= $active; ?>">
+                    <img class="image_slider_src" src="<?= URL; ?>public/images/slider/<?= utf8_encode($slider['imagen']); ?>">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <!-- 1 SLIDER TITLE AND DESC-->
+                        <h1 class="bounceInDown"><?= utf8_encode($slider['titulo']); ?></h1>
+                        <?= utf8_encode($slider['descripcion']); ?>
+                    </div> 
+                </div>
             </div>
-            <div class="item">
-                <img class="image_slider_src" src="http://placehold.it/1920x1080">
-                <div class="overlay"></div>
-                <div class="container">
-                    <!-- 2ND SLIDER TITLE AND DESC-->
-                    <h1 class="bounceInDown">HEY<span>!</span><br>We Are Awesome</h1>
-                    <p>Integer nec nulla bibendum, venenatis elit vel, vulputate nulla. Quisque lacinia nisi erat,
-                        <br>ut scelerisque augue pharetra et. Aliquam efficitur lacus eget.</p>
-                </div> 
-            </div>
-            <div class="item">
-                <img class="image_slider_src" src="http://placehold.it/1920x1080">
-                <div class="overlay"></div>
-
-                <div class="container">
-                    <!-- 3RD SLIDER TITLE AND DESC-->
-                    <h1 class="bounceInDown">HEY<span>!</span><br>We do Web Development</h1>
-                    <p>Integer nec nulla bibendum, venenatis elit vel, vulputate nulla. Quisque lacinia nisi erat,
-                        <br>ut scelerisque augue pharetra et. Aliquam efficitur lacus eget.</p>
-                </div> 
-            </div>
-        </div>
+        <?php endforeach; ?>
         <!-- SLIDER CONTROL-->
         <a class="left carousel-control" href="#carousel-crafty-generic" role="button" data-slide="prev"></a>
         <a class="right carousel-control" href="#carousel-crafty-generic" role="button" data-slide="next"></a>
@@ -43,7 +24,7 @@
     <div class="container">
         <div class="down_btn">
             <!-- SCROLL DOWN -->
-            <a class="about_b" href="#ABOUT"><img class="floating" src="images/down.png" alt=""></a>
+            <a class="about_b" href="#ABOUT"><img class="floating" src="<?= URL; ?>public/images/down.png" alt=""></a>
         </div>
     </div>   
 
@@ -52,16 +33,9 @@
 </div>
 </header>
 
-
-
-
-
-
-
 <!-- =========================
      START FEATURED PROJECT
 ============================== -->
-
 <!-- Featured Project-->
 <div class="fe_project">
     <div class="fe_item">
@@ -107,114 +81,75 @@
         <img src="http://placehold.it/900x520" alt="featured project"> 
     </div>
 </div>
-
-
 <!-- End Featured Project-->
-
-
-
-
-
-<!-- =========================
-     START ABOUT US
-============================== -->
-
-<section class="we_are page about type_one" id="ABOUT">
-    <div class="container no-pading">
-        <!-- ABOUT US SECTION TITLE AND DECS-->
-        <div class="section_header">
-            <h2>WE ARE CRAFTY</h2>
-            <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam, ac vulputate leo <br> vehicula. Mauris porttitor eros vel sapien semper vehicula. Donec eget ultricies ipsum, consequat rhoncus elit. </p>
+<?php if ($this->conocenos['estado'] == 1): ?>
+    <!-- =========================
+         START ABOUT US
+    ============================== -->
+    <section class="we_are page about type_one" id="conocenos">
+        <div class="container no-pading">
+            <!-- ABOUT US SECTION TITLE AND DECS-->
+            <div class="section_header">
+                <h2><?= utf8_encode($this->conocenos['seccion1']['titulo']); ?></h2>
+                <?= utf8_encode($this->conocenos['seccion1']['contenido']); ?>
+            </div>
+            <div class="section_content">
+                <div class="row">
+                    <?php foreach ($this->conocenos['seccion2'] as $seccion2): ?>
+                        <div class="col-md-4">
+                            <div class="wig">
+                                <div class="icon"> <i class="<?= utf8_encode($seccion2['font_awesome']); ?>"></i> </div>
+                                <div class="wig_text first">
+                                    <h2><?= utf8_encode($seccion2['titulo']); ?></h2>
+                                    <p><?= utf8_encode($seccion2['contenido']); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
-        <div class="section_content">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="wig">
-                        <div class="icon"> <i class="fa pe-7s-like"></i> </div>
-                        <div class="wig_text first">
-                            <h2>WE’RE CODE CAFE</h2>
-                            <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam.</p>
+
+        <div class="history type_two">
+            <div class="container narrow_cont">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="section_header left">
+                            <h2><?= utf8_encode($this->conocenos['seccion3']['titulo']); ?></h2> 
                         </div>
+                        <?= utf8_encode($this->conocenos['seccion3']['contenido']); ?>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="wig">
-                        <div class="icon"> <i class="fa pe-7s-light"></i> </div>
-                        <div class="wig_text">
-                            <h2>WE’RE AWESOME</h2>
-                            <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="wig">
-                        <div class="icon"> <i class="fa pe-7s-config"></i> </div>
-                        <div class="wig_text">
-                            <h2>WE’RE CREATIVE</h2>
-                            <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam.</p>
+                    <div class="col-md-4">
+                        <div class="his_img"> 
+                            <img src="<?= URL; ?>public/images/<?= utf8_encode($this->conocenos['seccion3']['imagen']); ?>" alt="Un poco de Historia"> 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="history type_two">
-        <div class="container narrow_cont">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="section_header left">
-                        <h2>A LITTLE HISTORY</h2> </div>
-                    <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
-                    <p> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium <span>doloremque</span> laudantium, totam rem aperiam. </p> 
-                    <a class="crafty_btn" href="">Read More</a> 
-                </div>
-                <div class="col-md-4">
-                    <div class="his_img"> 
-                        <img src="images/ipad.png" alt="ipad"> 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- End About Us-->
-
-
+        <!-- End About Us-->
+    <?php endif; ?>
     <!-- =========================
          START TESTIMONIAL
     ============================== -->
-
     <div class="testmonial_sec">
         <div class="testmonial_cont parallax testimonial-parallax" data-type="parallax" data-animate-up="header-hide" data-animate-down="header-hide">
             <div class="testmonial_cont_overlay">
                 <div class="testmonial">
                     <div class="container">
                         <div class="carousel-inner qutoSilder">
-                            <div class="item active">
-                                <div class="testmonial-caption">
-                                    <p>Integer nec nulla bibendum, venenatis elit vel, vulputate nulla. Quisque lacinia nisi erat, ut scelerisque augue pharetra et. Aliquam efficitur lacus eget odio dapibus vestibulum.</p>
-                                    <p class="cli_info"><span class="dash">-</span>
-                                        <br> <span class="cli_name">ABDULLAH NOMAN, </span>
-                                        <br> <span class="cli_com">CREATIVE DIRECTOR, <a href="">CODE CAFE</a></span> </p>
+                            <?php
+                            foreach ($this->frases as $key => $frases):
+                                $active = ($key == 0) ? 'active' : '';
+                                ?>
+                                <div class="item <?= $active; ?>">
+                                    <div class="testmonial-caption">
+                                        <p><?= utf8_encode($frases['frase']); ?></p>
+                                        <p class="cli_info"><span class="dash">-</span>
+                                            <br> <span class="cli_name"><?= utf8_encode($frases['autor']); ?> </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="testmonial-caption">
-                                    <p>Integer nec nulla bibendum, venenatis elit vel, vulputate nulla. Quisque lacinia nisi erat, ut scelerisque augue pharetra et. Aliquam efficitur lacus eget odio dapibus vestibulum.</p>
-                                    <p class="cli_info"><span class="dash">-</span>
-                                        <br> <span class="cli_name">ABDULLAH NOMAN, </span>
-                                        <br> <span class="cli_com">CREATIVE DIRECTOR, <a href="">CODE CAFE</a></span> </p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="testmonial-caption">
-                                    <p>Integer nec nulla bibendum, venenatis elit vel, vulputate nulla. Quisque lacinia nisi erat, ut scelerisque augue pharetra et. Aliquam efficitur lacus eget odio dapibus vestibulum.</p>
-                                    <p class="cli_info"><span class="dash">-</span>
-                                        <br> <span class="cli_name">ABDULLAH NOMAN, </span>
-                                        <br> <span class="cli_com">CREATIVE DIRECTOR, <a href="">CODE CAFE</a></span> </p>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -223,119 +158,113 @@
     </div>
     <!-- End Testimonial-->
 </section>
-
-
-
-
-
-<!-- =========================
-     START PORTFOLIO
-============================== -->
-
-<section id="PORTFOLIO" class="portfolio page type_one">
-    <div class="container text-center">
-        <!-- PORTFOLIO SECTION TITLE AND DECS-->
-        <div class="section_header">
-            <h2>THE PORTFOLIO</h2>
-            <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam, ac vulputate leo <br> vehicula. Mauris porttitor eros vel sapien semper vehicula. Donec eget ultricies ipsum, consequat rhoncus elit. </p>
+<?php if ($this->trabajos_encabezado['estado'] == 1): ?>
+    <!-- =========================
+         START PORTFOLIO
+    ============================== -->
+    <section id="que_hacemos" class="portfolio page type_one">
+        <div class="container text-center">
+            <!-- PORTFOLIO SECTION TITLE AND DECS-->
+            <div class="section_header">
+                <h2><?= utf8_encode($this->trabajos_encabezado['titulo']); ?></h2>
+                <p><?= utf8_encode($this->trabajos_encabezado['contenido']); ?></p>
+            </div>
         </div>
-    </div>
-    <!-- bootFolio content  -->
-    <div id="second" class="bf">
-        <!-- bootFolio category filter -->
-        <div class="container">
-            <ul class="filter">
-                <li><a data-cat="all" href="#" class="active">All Works</a> </li>
-                <li><a data-cat="html" href="#">HTML</a> </li>
-                <li><a data-cat="css" href="#">CSS</a> </li>
-                <li><a data-cat="wordpress" href="#">WordPress</a> </li>
-                <li><a data-cat="responsive" href="#">Responsive</a> </li>
-                <li><a data-cat="bootstrap" href="#">Bootstrap</a> </li>
+        <!-- bootFolio content  -->
+        <div id="second" class="bf">
+            <!-- bootFolio category filter -->
+            <div class="container">
+                <ul class="filter">
+                    <li><a data-cat="all" href="#" class="active">All Works</a> </li>
+                    <li><a data-cat="html" href="#">HTML</a> </li>
+                    <li><a data-cat="css" href="#">CSS</a> </li>
+                    <li><a data-cat="wordpress" href="#">WordPress</a> </li>
+                    <li><a data-cat="responsive" href="#">Responsive</a> </li>
+                    <li><a data-cat="bootstrap" href="#">Bootstrap</a> </li>
+                </ul>
+            </div>
+            <!-- bootFolio category filter -->
+            <!-- bootFolio Items -->
+            <ul class="items">
+                <!-- single item -->
+                <li class="html">
+                    <div class="bf-single-item"> 
+                        <img src="http://placehold.it/900x520" alt="project">
+                        <div class="caption">
+                            <a href="single-portfolio.html" target="_blank"></a>
+                        </div>
+                    </div>
+                </li>
+                <!-- single item -->
+                <li class="css html">
+                    <div class="bf-single-item"> 
+                        <img src="http://placehold.it/900x520" alt="project">
+                        <div class="caption">
+                            <a href="single-portfolio-2.html" target="_blank"></a>
+                        </div>
+                    </div>
+                </li>
+                <!-- single item -->
+                <li class="wordpress">
+                    <div class="bf-single-item"> 
+                        <img src="http://placehold.it/900x520" alt="project">
+                        <div class="caption">
+                            <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
+                        </div>
+                    </div>
+                </li>
+                <!-- single item -->
+                <li class="responsive bootstrap">
+                    <div class="bf-single-item"> 
+                        <img src="http://placehold.it/900x520" alt="project">
+                        <div class="caption">
+                            <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
+                        </div>
+                    </div>
+                </li>
+                <!-- single item -->
+                <li class="html">
+                    <div class="bf-single-item"> 
+                        <img src="http://placehold.it/900x520" alt="project">
+                        <div class="caption">
+                            <a href="single-portfolio.html" target="_blank"></a>
+                        </div>
+                    </div>
+                </li>
+                <!-- single item -->
+                <li class="bootstrap">
+                    <div class="bf-single-item"> 
+                        <img src="http://placehold.it/900x520" alt="project">
+                        <div class="caption">
+                            <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
+                        </div>
+                    </div>
+                </li>
+                <!-- single item -->
+                <li class="html">
+                    <div class="bf-single-item"> 
+                        <img src="http://placehold.it/900x520" alt="project">
+                        <div class="caption">
+                            <a href="single-portfolio-2.html" target="_blank"></a>
+                        </div>
+                    </div>
+                </li>
+                <!-- single item -->
+                <li class="css">
+                    <div class="bf-single-item"> 
+                        <img src="http://placehold.it/900x520" alt="project">
+                        <div class="caption">
+                            <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
+                        </div>
+                    </div>
+                </li>
             </ul>
+            <!-- // bootFolio Items -->
         </div>
-        <!-- bootFolio category filter -->
-        <!-- bootFolio Items -->
-        <ul class="items">
-            <!-- single item -->
-            <li class="html">
-                <div class="bf-single-item"> 
-                    <img src="http://placehold.it/900x520" alt="project">
-                    <div class="caption">
-                        <a href="single-portfolio.html" target="_blank"></a>
-                    </div>
-                </div>
-            </li>
-            <!-- single item -->
-            <li class="css html">
-                <div class="bf-single-item"> 
-                    <img src="http://placehold.it/900x520" alt="project">
-                    <div class="caption">
-                        <a href="single-portfolio-2.html" target="_blank"></a>
-                    </div>
-                </div>
-            </li>
-            <!-- single item -->
-            <li class="wordpress">
-                <div class="bf-single-item"> 
-                    <img src="http://placehold.it/900x520" alt="project">
-                    <div class="caption">
-                        <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
-                    </div>
-                </div>
-            </li>
-            <!-- single item -->
-            <li class="responsive bootstrap">
-                <div class="bf-single-item"> 
-                    <img src="http://placehold.it/900x520" alt="project">
-                    <div class="caption">
-                        <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
-                    </div>
-                </div>
-            </li>
-            <!-- single item -->
-            <li class="html">
-                <div class="bf-single-item"> 
-                    <img src="http://placehold.it/900x520" alt="project">
-                    <div class="caption">
-                        <a href="single-portfolio.html" target="_blank"></a>
-                    </div>
-                </div>
-            </li>
-            <!-- single item -->
-            <li class="bootstrap">
-                <div class="bf-single-item"> 
-                    <img src="http://placehold.it/900x520" alt="project">
-                    <div class="caption">
-                        <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
-                    </div>
-                </div>
-            </li>
-            <!-- single item -->
-            <li class="html">
-                <div class="bf-single-item"> 
-                    <img src="http://placehold.it/900x520" alt="project">
-                    <div class="caption">
-                        <a href="single-portfolio-2.html" target="_blank"></a>
-                    </div>
-                </div>
-            </li>
-            <!-- single item -->
-            <li class="css">
-                <div class="bf-single-item"> 
-                    <img src="http://placehold.it/900x520" alt="project">
-                    <div class="caption">
-                        <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <!-- // bootFolio Items -->
-    </div>
-    <!-- //bootFolio content -->
-</section>
-
-<!-- // End Portfolio -->
-
+        <!-- //bootFolio content -->
+    </section>
+    <!-- // End Portfolio -->
+<?php endif; ?>
 
 
 
@@ -848,7 +777,7 @@
                                 <li> Free Hosting</li>
                             </ul>
                             <div class="price-btn">
-                                <a href="#"><img src="images/arrow.png" alt=""></a>
+                                <a href="#"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -871,7 +800,7 @@
                                 <li> Free Hosting</li>
                             </ul>
                             <div class="price-btn">
-                                <a href="#"><img src="images/arrow.png" alt=""></a>
+                                <a href="#"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -892,7 +821,7 @@
                                 <li> Free Hosting</li>
                             </ul>
                             <div class="price-btn">
-                                <a href="#"><img src="images/arrow.png" alt=""></a>
+                                <a href="#"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -914,14 +843,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="clients_logo">
-                                <img src="images/clients/1.png" alt=""> 
-                                <img src="images/clients/2.png" alt=""> 
-                                <img src="images/clients/3.png" alt=""> 
-                                <img src="images/clients/4.png" alt=""> 
-                                <img src="images/clients/5.png" alt=""> 
-                                <img src="images/clients/6.png" alt=""> 
-                                <img src="images/clients/7.png" alt="">
-                                <img src="images/clients/8.png" alt=""> 
+                                <img src="<?= URL; ?>public/images/clients/1.png" alt=""> 
+                                <img src="<?= URL; ?>public/images/clients/2.png" alt=""> 
+                                <img src="<?= URL; ?>public/images/clients/3.png" alt=""> 
+                                <img src="<?= URL; ?>public/images/clients/4.png" alt=""> 
+                                <img src="<?= URL; ?>public/images/clients/5.png" alt=""> 
+                                <img src="<?= URL; ?>public/images/clients/6.png" alt=""> 
+                                <img src="<?= URL; ?>public/images/clients/7.png" alt="">
+                                <img src="<?= URL; ?>public/images/clients/8.png" alt=""> 
                             </div>                            
                         </div>
                     </div>
@@ -959,7 +888,7 @@
                         <h4>By <a href="#">Abdullah Noman</a></h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eos qui ratione.</p>
                         <div class="blog_single_link">
-                            <a href="single-blog.html"><img src="images/arrow.png" alt=""></a>
+                            <a href="single-blog.html"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -976,7 +905,7 @@
                         <h4>By <a href="#">Abdullah Noman</a></h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eos qui ratione.</p>
                         <div class="blog_single_link">
-                            <a href="single-blog.html"><img src="images/arrow.png" alt=""></a>
+                            <a href="single-blog.html"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -993,7 +922,7 @@
                         <h4>By <a href="#">Abdullah Noman</a></h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eos qui ratione.</p>
                         <div class="blog_single_link">
-                            <a href="single-blog.html"><img src="images/arrow.png" alt=""></a>
+                            <a href="single-blog.html"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
                         </div>
                     </div>
                 </div> 
@@ -1025,8 +954,8 @@
                 <form role="form" id="mc-form">
                     <label class="InputEmail1_lab" for="mce-EMAIL"></label>
                     <input type="email" class="form-control required email" id="mce-EMAIL" value="Your Email" onfocus="if (this.value == this.defaultValue)
-                                        this.value = '';" onblur="if (this.value == '')
-                                                    this.value = this.defaultValue;">
+                                this.value = '';" onblur="if (this.value == '')
+                                            this.value = this.defaultValue;">
                     <button type="submit" class="btn btn-dm">SUBMIT</button>
                 </form>
             </div>
