@@ -763,4 +763,17 @@ class Helper {
         return $sql[0];
     }
 
+    public function cargar_destacados($lng) {
+        $sql = $this->db->select("SELECT
+                                        t.web,
+                                        (select imagen_thumb from trabajos_img ti where ti.id_trabajos = t.id  and orden = 1 limit 1) as imagen
+                                FROM
+                                        trabajos t
+                                WHERE
+                                        t.estado = 1
+                                ORDER BY fecha DESC
+                                LIMIT 4");
+        return $sql;
+    }
+
 }

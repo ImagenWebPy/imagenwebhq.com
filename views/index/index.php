@@ -38,48 +38,14 @@
 ============================== -->
 <!-- Featured Project-->
 <div class="fe_project">
-    <div class="fe_item">
-        <div class="fe_pro_overlay">
-            <a href="http://placehold.it/900x520" data-rel="prettyPhoto"></a>
-        </div> 
-        <img src="http://placehold.it/900x520" alt="featured project"> 
-    </div>
-    <div class="fe_item">
-        <div class="fe_pro_overlay">
-            <a href="http://placehold.it/900x520" data-rel="prettyPhoto"></a>
-        </div> 
-        <img src="http://placehold.it/900x520" alt="featured project"> 
-    </div>
-    <div class="fe_item">
-        <div class="fe_pro_overlay">
-            <a href="http://placehold.it/900x520" data-rel="prettyPhoto"></a>
-        </div> 
-        <img src="http://placehold.it/900x520" alt="featured project"> 
-    </div>
-    <div class="fe_item">
-        <div class="fe_pro_overlay">
-            <a href="http://placehold.it/900x520" data-rel="prettyPhoto"></a>
-        </div> 
-        <img src="http://placehold.it/900x520" alt="featured project"> 
-    </div>
-    <div class="fe_item">
-        <div class="fe_pro_overlay">
-            <a href="http://placehold.it/900x520" data-rel="prettyPhoto"></a>
-        </div> 
-        <img src="http://placehold.it/900x520" alt="featured project"> 
-    </div>
-    <div class="fe_item">
-        <div class="fe_pro_overlay">
-            <a href="http://placehold.it/900x520" data-rel="prettyPhoto"></a>
-        </div> 
-        <img src="http://placehold.it/900x520" alt="featured project"> 
-    </div>
-    <div class="fe_item">
-        <div class="fe_pro_overlay">
-            <a href="http://placehold.it/900x520" data-rel="prettyPhoto"></a>
-        </div> 
-        <img src="http://placehold.it/900x520" alt="featured project"> 
-    </div>
+    <?php foreach ($this->destacados as $destacados): ?>
+        <div class="fe_item">
+            <div class="fe_pro_overlay">
+                <a href="#" data-rel="prettyPhoto"></a>
+            </div> 
+            <img src="<?= URL; ?>public/images/trabajos/thumb/<?= utf8_encode($destacados['imagen']); ?>" alt="<?= utf8_encode($destacados['web']); ?>"> 
+        </div>
+    <?php endforeach; ?>
 </div>
 <!-- End Featured Project-->
 <?php if ($this->conocenos['estado'] == 1): ?>
