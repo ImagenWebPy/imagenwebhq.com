@@ -763,6 +763,18 @@ class Helper {
         return $sql[0];
     }
 
+    public function cargar_trabajos($lng) {
+        $sql = $this->db->select("SELECT
+                                        t.web,
+                                        (select imagen_thumb from trabajos_img ti where ti.id_trabajos = t.id  and orden = 1 limit 1) as imagen
+                                FROM
+                                        trabajos t
+                                WHERE
+                                        t.estado = 1
+                                ORDER BY fecha DESC");
+        return $sql;
+    }
+
     public function cargar_destacados($lng) {
         $sql = $this->db->select("SELECT
                                         t.web,
@@ -773,6 +785,16 @@ class Helper {
                                         t.estado = 1
                                 ORDER BY fecha DESC
                                 LIMIT 4");
+        return $sql;
+    }
+
+    public function cargar_loquehacemosEncabezados($lng) {
+        $sql = $this->db->select("SELECT " . $lng . "_titulo as titulo, " . $lng . "_contenido as contenido, estado FROM `lo_que_hacemos_encabezado`;");
+        return $sql[0];
+    }
+
+    public function cargar_loquehacemos($lng) {
+        $sql = $this->db->select("SELECT icono, " . $lng . "_titulo as titulo, " . $lng . "_contenido as contenido FROM `lo_que_hacemos` WHERE estado = 1;");
         return $sql;
     }
 

@@ -17,7 +17,10 @@ class Index extends Controller {
         $this->view->conocenos = $this->helper->cargar_conocenos($lng);
         $this->view->frases = $this->helper->cargar_frases($lng);
         $this->view->trabajos_encabezado = $this->helper->cargar_trabajosEncabezados($lng);
-        
+        $this->view->trabajos = $this->helper->cargar_trabajos($lng);
+        $this->view->loquehacemos_encabezado = $this->helper->cargar_loquehacemosEncabezados($lng);
+        $this->view->loquehacemos = $this->helper->cargar_loquehacemos($lng);
+
         $this->view->title = SITE_TITLE;
         $this->view->description = '';
         $this->view->keywords = '';

@@ -128,7 +128,7 @@
     <!-- =========================
          START PORTFOLIO
     ============================== -->
-    <section id="que_hacemos" class="portfolio page type_one">
+    <section id="nuestro_orgullo" class="portfolio page type_one">
         <div class="container text-center">
             <!-- PORTFOLIO SECTION TITLE AND DECS-->
             <div class="section_header">
@@ -138,92 +138,20 @@
         </div>
         <!-- bootFolio content  -->
         <div id="second" class="bf">
-            <!-- bootFolio category filter -->
-            <div class="container">
-                <ul class="filter">
-                    <li><a data-cat="all" href="#" class="active">All Works</a> </li>
-                    <li><a data-cat="html" href="#">HTML</a> </li>
-                    <li><a data-cat="css" href="#">CSS</a> </li>
-                    <li><a data-cat="wordpress" href="#">WordPress</a> </li>
-                    <li><a data-cat="responsive" href="#">Responsive</a> </li>
-                    <li><a data-cat="bootstrap" href="#">Bootstrap</a> </li>
-                </ul>
-            </div>
-            <!-- bootFolio category filter -->
             <!-- bootFolio Items -->
             <ul class="items">
-                <!-- single item -->
-                <li class="html">
-                    <div class="bf-single-item"> 
-                        <img src="http://placehold.it/900x520" alt="project">
-                        <div class="caption">
-                            <a href="single-portfolio.html" target="_blank"></a>
+                <?php foreach ($this->trabajos as $trabajos): ?>
+                    <!-- single item -->
+                    <li class="html">
+                        <div class="bf-single-item"> 
+                            <img src="<?= URL; ?>public/images/trabajos/thumb/<?= utf8_encode($trabajos['imagen']); ?>" alt="<?= utf8_encode($trabajos['web']); ?>">
+                            <div class="caption">
+                                <a href="#" target="_blank"></a>
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <!-- single item -->
-                <li class="css html">
-                    <div class="bf-single-item"> 
-                        <img src="http://placehold.it/900x520" alt="project">
-                        <div class="caption">
-                            <a href="single-portfolio-2.html" target="_blank"></a>
-                        </div>
-                    </div>
-                </li>
-                <!-- single item -->
-                <li class="wordpress">
-                    <div class="bf-single-item"> 
-                        <img src="http://placehold.it/900x520" alt="project">
-                        <div class="caption">
-                            <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
-                        </div>
-                    </div>
-                </li>
-                <!-- single item -->
-                <li class="responsive bootstrap">
-                    <div class="bf-single-item"> 
-                        <img src="http://placehold.it/900x520" alt="project">
-                        <div class="caption">
-                            <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
-                        </div>
-                    </div>
-                </li>
-                <!-- single item -->
-                <li class="html">
-                    <div class="bf-single-item"> 
-                        <img src="http://placehold.it/900x520" alt="project">
-                        <div class="caption">
-                            <a href="single-portfolio.html" target="_blank"></a>
-                        </div>
-                    </div>
-                </li>
-                <!-- single item -->
-                <li class="bootstrap">
-                    <div class="bf-single-item"> 
-                        <img src="http://placehold.it/900x520" alt="project">
-                        <div class="caption">
-                            <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
-                        </div>
-                    </div>
-                </li>
-                <!-- single item -->
-                <li class="html">
-                    <div class="bf-single-item"> 
-                        <img src="http://placehold.it/900x520" alt="project">
-                        <div class="caption">
-                            <a href="single-portfolio-2.html" target="_blank"></a>
-                        </div>
-                    </div>
-                </li>
-                <!-- single item -->
-                <li class="css">
-                    <div class="bf-single-item"> 
-                        <img src="http://placehold.it/900x520" alt="project">
-                        <div class="caption">
-                            <a href="http://placehold.it/900x520" data-rel="prettyPhoto[pp_gal]"></a>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                <?php endforeach; ?>
+
             </ul>
             <!-- // bootFolio Items -->
         </div>
@@ -231,317 +159,110 @@
     </section>
     <!-- // End Portfolio -->
 <?php endif; ?>
-
-
-
-
-<!-- =========================
-     START SERVICES
-============================== -->
-
-<section id="SERVICES" class="services page type_one">
-    <div class="container">
-        <!-- SERVICE SECTION TITLE AND DECS-->
-        <div class="section_header">
-            <h2>OUR SERVICES</h2>
-            <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam, ac vulputate leo <br> vehicula. Mauris porttitor eros vel sapien semper vehicula. Donec eget ultricies ipsum, consequat rhoncus elit. </p>
-        </div>
-    </div>
-    <!-- SERVICE TAB TITLE-->
-    <div class="container">
-        <ul id="myTab" class="nav nav-tabs nav-justified nav-services" role="tablist">
-            <li class="active"><a href="#tab1" role="tab" data-toggle="tab"><i class="fa pe-7s-paint"></i><br>GRAPHIC DESIGN</a></li>
-            <li class=""><a href="#tab2" role="tab" data-toggle="tab"><i class="fa pe-7s-tools"></i><br>WEB DEVELOMENT</a></li>
-            <li><a href="#tab3" role="tab" data-toggle="tab"><i class="fa pe-7s-portfolio"></i><br>AFFILIATE MARKETING</a></li>
-            <li><a href="#tab4" role="tab" data-toggle="tab"><i class="fa pe-7s-loop"></i><br>MOTION GRAPHICS</a></li>
-        </ul>
-    </div>
-    <!-- SERVICE TAB DESCRIPTION-->
-    <div class="container">
-        <div class="bs-example bs-example-tabs">
-            <div id="myTabContent" class="tab-content prog_cint">
-                <div class="tab-pane fade active in" id="tab1">
-                    <div class="service-tab-desc">
-                        <h2>Vestibulum congue urna dolor</h2>
-                        <p>In ultrices felis <span>congue</span> quis. Phasellus porttitor cursus ipsum in pulvinar. Donec nulla dolor, gravida sit amet congue non, sollicitudin et lorem. Aliquam eu ante vestibulum, <b>porttitor <span>purus</span> et, elementum sapien</b>. Maecenas facilisis nisl nec rutrum varius. </p>
-                        <p>Integer pellentesque velit quis pretium egestas. <span>Aliquam</span> efficitur lacinia tortor semper tristique. </p>                            
-                    </div>
-                    <div class="row extra-margin">
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">Branding <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">94% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">Adobe Photoshop <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">70% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">Web Design <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">95% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">Adobe Illustrator <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">77% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">User Interface <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">86% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">Adobe Indesign <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">86% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="tab2">
-                    <div class="service-tab-desc">
-                        <h2>Vestibulum congue urna dolor</h2>
-                        <p>In ultrices felis <span>congue</span> quis. Phasellus porttitor cursus ipsum in pulvinar. Donec nulla dolor, gravida sit amet congue non, sollicitudin et lorem. Aliquam eu ante vestibulum, <b>porttitor <span>purus</span> et, elementum sapien</b>. Maecenas facilisis nisl nec rutrum varius. </p>
-                        <p>Integer pellentesque velit quis pretium egestas. <span>Aliquam</span> efficitur lacinia tortor semper tristique. </p>                            
-                    </div>
-                    <div class="row extra-margin">
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">HTML 5 <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">94% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">CSS3 <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">70% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">Javascript <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">95% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">Ajax <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">77% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">PHP <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">86% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">Wordpress <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">98% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="tab3">
-                    <div class="service-tab-desc">
-                        <h2>Vestibulum congue urna dolor</h2>
-                        <p>In ultrices felis <span>congue</span> quis. Phasellus porttitor cursus ipsum in pulvinar. Donec nulla dolor, gravida sit amet congue non, sollicitudin et lorem. Aliquam eu ante vestibulum, <b>porttitor <span>purus</span> et, elementum sapien</b>. Maecenas facilisis nisl nec rutrum varius. </p>
-                        <p>Integer pellentesque velit quis pretium egestas. <span>Aliquam</span> efficitur lacinia tortor semper tristique. </p>                            
-                    </div>
-                    <div class="row extra-margin">
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">SEO <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">94% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">Article Writting <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">70% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">Data Analysis <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">95% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">Twiter Marketing <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">77% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">Youtube Marketing <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">86% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">Facebook Marketing <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">86% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="tab4">
-                    <div class="service-tab-desc">
-                        <h2>Vestibulum congue urna dolor</h2>
-                        <p>In ultrices felis <span>congue</span> quis. Phasellus porttitor cursus ipsum in pulvinar. Donec nulla dolor, gravida sit amet congue non, sollicitudin et lorem. Aliquam eu ante vestibulum, <b>porttitor <span>purus</span> et, elementum sapien</b>. Maecenas facilisis nisl nec rutrum varius. </p>
-                        <p>Integer pellentesque velit quis pretium egestas. <span>Aliquam</span> efficitur lacinia tortor semper tristique. </p>                            
-                    </div>
-                    <div class="row extra-margin">
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">Parallax <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">94% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">Particles <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">70% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">Path of action <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">95% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">Persistence of vision <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">77% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="progress_cont">
-                                <div class="skill">Polygon <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">86% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                            <div class="progress_cont">
-                                <div class="skill">Render <span class="pull-right"></span> </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> <span class="sr-only">86% Complete (success)</span> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
+<?php if ($this->loquehacemos_encabezado['estado'] == 1): ?>
     <!-- =========================
-         START PROCESS
+         START SERVICES
     ============================== -->
-    <div class="the_process type_two">
+    <section id="que_hacemos" class="services page type_one">
         <div class="container">
-            <!-- PROCESS TITLE AND DESCRIPTION-->
+            <!-- SERVICE SECTION TITLE AND DECS-->
             <div class="section_header">
-                <h2>The Process</h2>
-                <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam, ac vulputate <br>leo vehicula. Mauris porttitor eros vel sapien semper vehicula. Donec eget ultricies ipsum, consequat rhoncus elit. </p>
+                <h2><?= utf8_encode($this->loquehacemos_encabezado['titulo']); ?></h2>
+                <p><?= utf8_encode($this->loquehacemos_encabezado['contenido']); ?></p>
             </div>
         </div>
-
+        <!-- SERVICE TAB TITLE-->
         <div class="container">
-            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-                <!-- PROCESS LISTS-->
-                <ul id="myTab1" class="nav nav-tabs nav-justified" role="tablist">
-                    <li class="active">
-                        <a href="#process1" id="process1-tab" role="tab" data-toggle="tab" aria-controls="process1" aria-expanded="true">
-                            <i class="fa pe-7s-plug"></i>
-                            <span>Connect</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#process2" role="tab" id="process2-tab" data-toggle="tab" aria-controls="process2">
-                            <i class="fa pe-7s-scissors"></i>
-                            <span>Planning</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#process3" role="tab" id="process3-tab" data-toggle="tab" aria-controls="process3">
-                            <i class="fa pe-7s-gleam"></i>
-                            <span>Development</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#process4" role="tab" id="process4-tab" data-toggle="tab" aria-controls="process4">
-                            <i class="fa pe-7s-flag"></i>
-                            <span>Launch</span>
-                        </a>
-                    </li>
+            <ul id="myTab" class="nav nav-tabs nav-justified nav-services" role="tablist">
+                <?php
+                foreach ($this->loquehacemos as $key => $loquehacemos):
+                    $tab = $key + 1;
+                    $active = ($key == 0) ? 'active' : '';
+                    ?>
+                    <li class="<?= $active; ?>"><a href="#tab<?= $tab; ?>" role="tab" data-toggle="tab"><i class="<?= utf8_encode($loquehacemos['icono']) ?>"></i><br><?= utf8_encode($loquehacemos['titulo']) ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <!-- SERVICE TAB DESCRIPTION-->
+        <div class="container">
+            <div class="bs-example bs-example-tabs">
+                <div id="myTabContent" class="tab-content prog_cint">
+                    <?php
+                    foreach ($this->loquehacemos as $key => $loquehacemos):
+                        $tab = $key + 1;
+                        $active = ($key == 0) ? 'active in' : '';
+                        ?>
+                        <div class="tab-pane fade <?= $active; ?>" id="tab<?= $tab; ?>">
+                            <div class="service-tab-desc">
+                                <h2><?= utf8_encode($loquehacemos['titulo']); ?></h2>
+                                <?= utf8_encode($loquehacemos['contenido']); ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+        <!-- =========================
+             START PROCESS
+        ============================== -->
+        <div class="the_process type_two">
+            <div class="container">
+                <!-- PROCESS TITLE AND DESCRIPTION-->
+                <div class="section_header">
+                    <h2>The Process</h2>
+                    <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam, ac vulputate <br>leo vehicula. Mauris porttitor eros vel sapien semper vehicula. Donec eget ultricies ipsum, consequat rhoncus elit. </p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                    <!-- PROCESS LISTS-->
+                    <ul id="myTab1" class="nav nav-tabs nav-justified" role="tablist">
+                        <li class="active">
+                            <a href="#process1" id="process1-tab" role="tab" data-toggle="tab" aria-controls="process1" aria-expanded="true">
+                                <i class="fa pe-7s-plug"></i>
+                                <span>Connect</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#process2" role="tab" id="process2-tab" data-toggle="tab" aria-controls="process2">
+                                <i class="fa pe-7s-scissors"></i>
+                                <span>Planning</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#process3" role="tab" id="process3-tab" data-toggle="tab" aria-controls="process3">
+                                <i class="fa pe-7s-gleam"></i>
+                                <span>Development</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#process4" role="tab" id="process4-tab" data-toggle="tab" aria-controls="process4">
+                                <i class="fa pe-7s-flag"></i>
+                                <span>Launch</span>
+                            </a>
+                        </li>
 
-                </ul>
-                <!-- PROCESS DESCRIPTION-->
-                <div id="myTabContent1" class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="process1" aria-labelledBy="process1-tab">
-                        <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="process2" aria-labelledBy="process2-tab">
-                        <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="process3" aria-labelledBy="process3-tab">
-                        <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="process4" aria-labelledBy="process4-tab">
-                        <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
+                    </ul>
+                    <!-- PROCESS DESCRIPTION-->
+                    <div id="myTabContent1" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="process1" aria-labelledBy="process1-tab">
+                            <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="process2" aria-labelledBy="process2-tab">
+                            <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="process3" aria-labelledBy="process3-tab">
+                            <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="process4" aria-labelledBy="process4-tab">
+                            <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End PROCESS-->
-
+        <!-- End PROCESS-->
+    <?php endif; ?>
     <!-- =========================
        START FUN FACTS
    ============================== -->
