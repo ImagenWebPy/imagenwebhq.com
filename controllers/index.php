@@ -20,6 +20,11 @@ class Index extends Controller {
         $this->view->trabajos = $this->helper->cargar_trabajos($lng);
         $this->view->loquehacemos_encabezado = $this->helper->cargar_loquehacemosEncabezados($lng);
         $this->view->loquehacemos = $this->helper->cargar_loquehacemos($lng);
+        $this->view->elproceso_encabezado = $this->helper->cargar_elprocesoEncabezados($lng);
+        $this->view->elproceso = $this->helper->cargar_elproceso($lng);
+        $this->view->parallax = $this->helper->parallax($lng);
+        $this->view->blog_encabezado = $this->helper->cargar_blogEncabezado($lng);
+        $this->view->blog = $this->helper->cargar_blog($lng);
 
         $this->view->title = SITE_TITLE;
         $this->view->description = '';

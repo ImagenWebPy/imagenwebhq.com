@@ -793,8 +793,44 @@ class Helper {
         return $sql[0];
     }
 
+    public function cargar_elprocesoEncabezados($lng) {
+        $sql = $this->db->select("SELECT " . $lng . "_titulo as titulo, " . $lng . "_contenido as contenido, estado FROM `el_proceso_encabezado`;");
+        return $sql[0];
+    }
+
+    public function cargar_blogEncabezado($lng) {
+        $sql = $this->db->select("SELECT " . $lng . "_titulo as titulo, " . $lng . "_contenido as contenido, estado FROM `blog_encabezado`;");
+        return $sql[0];
+    }
+
+    public function parallax($lng) {
+        $sql = $this->db->select("SELECT " . $lng . "_frase as frase, estado FROM `parallax`;");
+        return $sql[0];
+    }
+
     public function cargar_loquehacemos($lng) {
         $sql = $this->db->select("SELECT icono, " . $lng . "_titulo as titulo, " . $lng . "_contenido as contenido FROM `lo_que_hacemos` WHERE estado = 1;");
+        return $sql;
+    }
+
+    public function cargar_elproceso($lng) {
+        $sql = $this->db->select("SELECT icono, " . $lng . "_titulo as titulo, " . $lng . "_contenido as contenido FROM `el_proceso` WHERE estado = 1;");
+        return $sql;
+    }
+
+    public function cargar_blog($lng) {
+        $sql = $this->db->select("SELECT
+                                        id,
+                                        " . $lng . "_titulo AS titulo,
+                                        SUBSTR(" . $lng . "_contenido FROM 1 FOR 260) AS contenido,
+                                        imagen_thumb as imagen
+                                FROM
+                                        `blog`
+                                WHERE
+                                        estado = 1
+                                ORDER BY
+                                        fecha_blog DESC
+                                LIMIT 3;");
         return $sql;
     }
 

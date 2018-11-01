@@ -209,423 +209,115 @@
             <div class="container">
                 <!-- PROCESS TITLE AND DESCRIPTION-->
                 <div class="section_header">
-                    <h2>The Process</h2>
-                    <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam, ac vulputate <br>leo vehicula. Mauris porttitor eros vel sapien semper vehicula. Donec eget ultricies ipsum, consequat rhoncus elit. </p>
+                    <h2><?= utf8_encode($this->elproceso_encabezado['titulo']) ?></h2>
+                    <p><?= utf8_encode($this->elproceso_encabezado['contenido']) ?></p>
                 </div>
             </div>
             <div class="container">
                 <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                     <!-- PROCESS LISTS-->
                     <ul id="myTab1" class="nav nav-tabs nav-justified" role="tablist">
-                        <li class="active">
-                            <a href="#process1" id="process1-tab" role="tab" data-toggle="tab" aria-controls="process1" aria-expanded="true">
-                                <i class="fa pe-7s-plug"></i>
-                                <span>Connect</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#process2" role="tab" id="process2-tab" data-toggle="tab" aria-controls="process2">
-                                <i class="fa pe-7s-scissors"></i>
-                                <span>Planning</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#process3" role="tab" id="process3-tab" data-toggle="tab" aria-controls="process3">
-                                <i class="fa pe-7s-gleam"></i>
-                                <span>Development</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#process4" role="tab" id="process4-tab" data-toggle="tab" aria-controls="process4">
-                                <i class="fa pe-7s-flag"></i>
-                                <span>Launch</span>
-                            </a>
-                        </li>
-
+                        <?php
+                        foreach ($this->elproceso as $key => $proceso):
+                            $process = $key + 1;
+                            $active = ($key == 0) ? 'active' : '';
+                            ?>
+                            <li class="<?= $active; ?>">
+                                <a href="#process<?= $process; ?>" id="process<?= $process; ?>-tab" role="tab" data-toggle="tab" aria-controls="process<?= $process; ?>" aria-expanded="true">
+                                    <i class="<?= utf8_encode($proceso['icono']); ?>"></i>
+                                    <span><?= utf8_encode($proceso['titulo']); ?></span>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                     <!-- PROCESS DESCRIPTION-->
                     <div id="myTabContent1" class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade in active" id="process1" aria-labelledBy="process1-tab">
-                            <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="process2" aria-labelledBy="process2-tab">
-                            <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="process3" aria-labelledBy="process3-tab">
-                            <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="process4" aria-labelledBy="process4-tab">
-                            <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <b>Ut <span>enim</span> ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</b>. Duis aute irure dolor in reprehenderit in voluptate velit esse <span>cillum</span> dolore eu fugiat nulla pariatur. </p>
-                        </div>
+                        <?php
+                        foreach ($this->elproceso as $key => $proceso):
+                            $process = $key + 1;
+                            $active = ($key == 0) ? 'active in' : '';
+                            ?>
+                            <div role="tabpanel" class="tab-pane fade <?= $active; ?>" id="process<?= $process; ?>" aria-labelledBy="process<?= $process; ?>-tab">
+                                <p><?= utf8_encode($proceso['contenido']); ?></p>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End PROCESS-->
     <?php endif; ?>
-    <!-- =========================
-       START FUN FACTS
-   ============================== -->
-
-    <div class="fact_number_cont parallax fun-fact-parallax" data-type="parallax" data-animate-up="header-hide" data-animate-down="header-hide">
-        <div class="fact_number_cont_overlay">
-            <div class="fact_number text-center">
-                <div class="container narrow">
-                    <div class="row">
-                        <div class="col-sm-4"> 
-                            <i class="factfa fa pe-7s-cup"></i>
-                            <div class="number"><span>300</span>+</div> 
-                            <span>AWARD WINS</span> 
-                        </div>
-                        <div class="col-sm-4"> 
-                            <i class="factfa fa pe-7s-clock"></i>
-                            <div class="number"><span>3300</span>+</div> 
-                            <span>HOURS WORKED</span> 
-                        </div>
-                        <div class="col-sm-4"> 
-                            <i class="factfa fa pe-7s-users"></i>
-                            <div class="number"><span>700</span></div> 
-                            <span>HAPPY CLIENTS</span> 
+    <?php if ($this->parallax['estado'] == 1): ?>
+        <!-- =========================
+           START FUN FACTS
+       ============================== -->
+        <div class="fact_number_cont parallax fun-fact-parallax" data-type="parallax" data-animate-up="header-hide" data-animate-down="header-hide">
+            <div class="fact_number_cont_overlay">
+                <div class="fact_number text-center">
+                    <div class="container narrow">
+                        <div class="row">
+                            <div class="col-sm-40"> 
+                                <div style=" text-align: justify;">
+                                    <span><?= utf8_encode($this->parallax['frase']); ?></span> 
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End FUN FACTS-->
+        <!-- End FUN FACTS-->
+    <?php endif; ?>
 </section>
-
 <!-- End SERVICES-->
 
-
-<!-- =========================
-     START TEAM
-============================== -->
-
-<section id="TEAM" class="team page type_one">
-    <div class="container">
-        <div class="section_header">
-            <h2>THE TEAM</h2>
-            <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam, ac vulputate leo <br>vehicula. Mauris porttitor eros vel sapien semper vehicula. Donec eget ultricies ipsum, consequat rhoncus elit. </p>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 col-md-3">
-                <!-- START SINGLE TEAM -->
-                <div class="thumbnail"> 
-                    <div class="team_member_image">
-                        <img src="http://placehold.it/870x1100" alt="team">
-                        <div class="team_overlay"></div>
-                    </div>
-                    <div class="caption text-center">
-                        <h3>JOHN DOE</h3>
-                        <p>Founder</p>
-                        <div class="team_social">
-                            <h4>Follow On:</h4>
-                            <ul class="list-inline">
-
-                                <li><a href="#"><i class="fa fa-facebook"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a> </li>
-                            </ul>
-                        </div>
-                    </div>                        
-                </div>
-                <!-- END SINGLE TEAM -->
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <!-- START SINGLE TEAM -->
-                <div class="thumbnail"> 
-                    <div class="team_member_image">
-                        <img src="http://placehold.it/870x1100" alt="team">
-                        <div class="team_overlay"></div>
-                    </div>
-                    <div class="caption text-center">
-                        <h3>Kabir Uddin</h3>
-                        <p>Lead Developer</p>
-                        <div class="team_social">
-                            <h4>Follow On:</h4>
-                            <ul class="list-inline">
-
-                                <li><a href="#"><i class="fa fa-facebook"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a> </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE TEAM -->
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <!-- START SINGLE TEAM -->
-                <div class="thumbnail"> 
-                    <div class="team_member_image">
-                        <img src="http://placehold.it/870x1100" alt="team">
-                        <div class="team_overlay"></div>                            
-                    </div>
-                    <div class="caption text-center">
-                        <h3>Bized Khan</h3>
-                        <p>Wordpress Developer</p>
-                        <div class="team_social">
-                            <h4>Follow On:</h4>
-                            <ul class="list-inline">
-
-                                <li><a href="#"><i class="fa fa-facebook"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a> </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE TEAM -->
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <!-- START SINGLE TEAM -->
-                <div class="thumbnail"> 
-                    <div class="team_member_image">
-                        <img src="http://placehold.it/870x1100" alt="team">
-                        <div class="team_overlay"></div>   
-                    </div>
-                    <div class="caption text-center">
-                        <h3>Abdullah Noman</h3>
-                        <p>Gr. Designer</p>
-                        <div class="team_social">
-                            <h4>Follow On:</h4>
-                            <ul class="list-inline">
-
-                                <li><a href="#"><i class="fa fa-facebook"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a> </li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a> </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE TEAM -->
-            </div>
-        </div>
-    </div>
-
-    <!-- END TEAM-->
-
-
+<?php if ($this->blog_encabezado['estado'] == 1): ?>
     <!-- =========================
-         START TWITTER FEED
+         START BLOG
     ============================== -->
-    <div class="twtter_feed_cont parallax twitter-parallax" data-type="parallax" data-animate-up="header-hide" data-animate-down="header-hide">
-        <div class="twtter_feed_overlay">
-            <div class="twiter_feed_section text-center">
-                <!-- Section Body-->
-                <div class="section_body">
-                    <div class="container">
-                        <div class="text-center tw_ic">
-                            <i class="fa fa-twitter fa-5x"></i>
-                        </div>
-                        <div class="tweet"></div>
-                    </div>
-                </div>
-                <!-- // Section Body-->
-            </div>
-        </div>
-    </div>
-
-    <!-- END TWITTER FEED-->
-
-
-    <!-- =========================
-         START PRICING
-    ============================== -->
-    <div class="price_area type_one">
+    <section class="blog page type_one" id="BLOG">
         <div class="container ">
+            <!-- START BLOG TITLE AND DESC -->
             <div class="section_header">
-                <h2>OUR PRICE</h2>
-                <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam, ac vulputate leo <br> vehicula. Mauris porttitor eros vel sapien semper vehicula. Donec eget ultricies ipsum, consequat rhoncus elit. </p>
+                <h2><?= utf8_encode($this->blog_encabezado['titulo']); ?></h2>
+                <p><?= utf8_encode($this->blog_encabezado['contenido']); ?></p>
             </div>
         </div>
-        <div class="price">
-            <div class="container">
-                <div class="row">
-                    <!-- START SINGLE PRICING ITEAM -->
-                    <div class="col-sm-4 price_single">
-                        <div class="main">
-                            <h3>$13</h3>
-                            <h5>BEGINNER</h5>
-                        </div>
-                        <div class="desc">
-                            <ul class="list-unstyled text-left">
-                                <li> 50+ Projects</li>
-                                <li> 24/7h  Supports</li>
-                                <li> Unlimited Revisions</li>
-                                <li> Free Update</li>
-                                <li> Free Installation</li>
-                                <li> Free Domain</li>
-                                <li> Free Hosting</li>
-                            </ul>
-                            <div class="price-btn">
-                                <a href="#"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
+        <div class="container">
+            <div class="row">
+                <?php foreach ($this->blog as $blog): ?>
+                    <div class="col-md-4">
+                        <!-- START SINGLE BLOG ITEM -->
+                        <div class="single_blog">
+                            <div class="single_blog_image">
+                                <img src="<?= URL; ?>public/images/blog/thumb/<?= utf8_decode($blog['imagen']); ?>" alt="">
+                            </div>
+                            <div class="blog_caption">
+                                <h2><a href="#"><?= utf8_decode($blog['titulo']); ?></a></h2>
+                                <p><?= strip_tags(utf8_decode($blog['contenido'])); ?></p>
+                                <div class="blog_single_link">
+                                    <a href="#"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
+                                </div>
                             </div>
                         </div>
+                        <!-- END SINGLE BLOG ITEM -->
                     </div>
-                    <!-- END SINGLE PRICING ITEAM -->
-
-                    <!-- START SINGLE PRICING ITEAM -->
-                    <div class="col-sm-4 price_single">
-                        <div class="main">
-                            <h3>$43</h3>
-                            <h5>PROFESSIONAL</h5>
-                        </div>
-                        <div class="desc">
-                            <ul class="list-unstyled text-left">
-                                <li> 50+ Projects</li>
-                                <li> 24/7h  Supports</li>
-                                <li> Unlimited Revisions</li>
-                                <li> Free Update</li>
-                                <li> Free Installation</li>
-                                <li> Free Domain</li>
-                                <li> Free Hosting</li>
-                            </ul>
-                            <div class="price-btn">
-                                <a href="#"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END SINGLE PRICING ITEAM -->
-                    <div class="col-sm-4 price_single">
-                        <div class="main">
-                            <h3>$63</h3>
-                            <h5>ADVANCE</h5>
-                        </div>
-                        <div class="desc">
-                            <ul class="list-unstyled text-left">
-                                <li> 50+ Projects</li>
-                                <li> 24/7h  Supports</li>
-                                <li> Unlimited Revisions</li>
-                                <li> Free Update</li>
-                                <li> Free Installation</li>
-                                <li> Free Domain</li>
-                                <li> Free Hosting</li>
-                            </ul>
-                            <div class="price-btn">
-                                <a href="#"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END SINGLE PRICING ITEAM -->
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
-
-        <!-- END PRICING-->
-
-
-        <!-- =========================
-             START OUR CLIENTS
-        ============================== -->   
-
-        <div class="clients parallax">
-            <div class="clients_overlay">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="clients_logo">
-                                <img src="<?= URL; ?>public/images/clients/1.png" alt=""> 
-                                <img src="<?= URL; ?>public/images/clients/2.png" alt=""> 
-                                <img src="<?= URL; ?>public/images/clients/3.png" alt=""> 
-                                <img src="<?= URL; ?>public/images/clients/4.png" alt=""> 
-                                <img src="<?= URL; ?>public/images/clients/5.png" alt=""> 
-                                <img src="<?= URL; ?>public/images/clients/6.png" alt=""> 
-                                <img src="<?= URL; ?>public/images/clients/7.png" alt="">
-                                <img src="<?= URL; ?>public/images/clients/8.png" alt=""> 
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
+        <div class="container text-center">
+            <div class="home-blog-btn">
+                <?php if ($this->idioma == 'en'): ?>
+                    <a class="crafty_btn" href="#">See all blog posts</a>
+                <?php else: ?>
+                    <a class="crafty_btn" href="#">Ver Todas las Publicaciones</a>
+                <?php endif; ?>
             </div>
+
         </div>
-    </div>
-</section>
-<!-- END CLIENT-->
-
-
-
-<!-- =========================
-     START BLOG
-============================== -->
-
-<section class="blog page type_one" id="BLOG">
-    <div class="container ">
-        <!-- START BLOG TITLE AND DESC -->
-        <div class="section_header">
-            <h2>Latest Blog</h2>
-            <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam, ac vulputate leo <br> vehicula. Mauris porttitor eros vel sapien semper vehicula. Donec eget ultricies ipsum, consequat rhoncus elit. </p>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <!-- START SINGLE BLOG ITEM -->
-                <div class="single_blog">
-                    <div class="single_blog_image">
-                        <img src="http://placehold.it/900x600" alt="">
-                    </div>
-                    <div class="blog_caption">
-                        <h2><a href="single-blog.html">Tempor incididunt ut labore</a></h2>
-                        <h4>By <a href="#">Abdullah Noman</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eos qui ratione.</p>
-                        <div class="blog_single_link">
-                            <a href="single-blog.html"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE BLOG ITEM -->
-            </div>
-            <div class="col-md-4">
-                <!-- START SINGLE BLOG ITEM -->
-                <div class="single_blog">
-                    <div class="single_blog_image">
-                        <img src="http://placehold.it/900x600" alt="">
-                    </div>
-                    <div class="blog_caption">
-                        <h2><a href="single-blog.html">Tempor incididunt ut labore</a></h2>
-                        <h4>By <a href="#">Abdullah Noman</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eos qui ratione.</p>
-                        <div class="blog_single_link">
-                            <a href="single-blog.html"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END SINGLE BLOG ITEM -->                    
-            </div>
-            <div class="col-md-4">
-                <!-- START SINGLE BLOG ITEM -->
-                <div class="single_blog">
-                    <div class="single_blog_image">
-                        <img src="http://placehold.it/900x600" alt="">
-                    </div>
-                    <div class="blog_caption">
-                        <h2><a href="single-blog.html">Tempor incididunt ut labore</a></h2>
-                        <h4>By <a href="#">Abdullah Noman</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eos qui ratione.</p>
-                        <div class="blog_single_link">
-                            <a href="single-blog.html"><img src="<?= URL; ?>public/images/arrow.png" alt=""></a>
-                        </div>
-                    </div>
-                </div> 
-                <!-- START SINGLE BLOG ITEM -->                   
-            </div>
-        </div>
-    </div>
-    <div class="container text-center">
-        <div class="home-blog-btn">
-            <a class="crafty_btn" href="blog.html">View More</a>
-        </div>
-
-    </div>
-</section>
-<!-- END BLOG-->
-
+    </section>
+    <!-- END BLOG-->
+<?php endif; ?>
 
 <!-- =========================
      START SUBSCRIBE
