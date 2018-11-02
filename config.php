@@ -16,6 +16,13 @@ switch ($host) {
         define('DB_NAME', 'iweb');
         define('DB_HOST', 'localhost');
         break;
+    case '192.168.1.89':
+        define('URL', 'http://192.168.1.89/imagenwebhq.com/');
+        define('DB_USER', 'root');
+        define('DB_PASS', 'cThoNTJ0cy9tVU5lQ3JnTDgrbXZxdz09');
+        define('DB_NAME', 'iweb');
+        define('DB_HOST', 'localhost');
+        break;
 }
 define('LIBS', 'libs/');
 

@@ -25,7 +25,8 @@ class Index extends Controller {
         $this->view->parallax = $this->helper->parallax($lng);
         $this->view->blog_encabezado = $this->helper->cargar_blogEncabezado($lng);
         $this->view->blog = $this->helper->cargar_blog($lng);
-
+        $this->view->newsletter = $this->helper->cargar_newsletter($lng);
+        $this->view->contacto = $this->helper->cargar_contacto($lng);
         $this->view->title = SITE_TITLE;
         $this->view->description = '';
         $this->view->keywords = '';

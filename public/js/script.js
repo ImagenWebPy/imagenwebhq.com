@@ -1,27 +1,23 @@
-jQuery(function($) {
+jQuery(function ($) {
     'use strict';
-    (function() {
-        $(window).on('load', function() {
-
+    (function () {
+        $(window).on('load', function () {
             /*
-            =========================================================================================
-            1. Spinner 
-            =========================================================================================
-            */
+             =========================================================================================
+             1. Spinner 
+             =========================================================================================
+             */
             $(".spinner_hol").fadeOut("slow");
-
-
-
             /*
-            =========================================================================================
-            2.PARALLAX
-            =========================================================================================
-            */
+             =========================================================================================
+             2.PARALLAX
+             =========================================================================================
+             */
 
             parallaxInit();
 
             function parallaxInit() {
-                
+
                 $('.home-parallax').parallax("30%", 0.1);
                 $('.testimonial-parallax').parallax("30%", 0.1);
                 $('.twitter-parallax').parallax("30%", 0.1);
@@ -32,14 +28,14 @@ jQuery(function($) {
 
 
 
-    (function() {
-        $(window).on('scroll', function() {
+    (function () {
+        $(window).on('scroll', function () {
 
             /*
-            =========================================================================================
-            3. NAVBAR 
-            =========================================================================================
-            */
+             =========================================================================================
+             3. NAVBAR 
+             =========================================================================================
+             */
             if ($(window).scrollTop() > 80) {
                 $(".navbar-nav>li>a, .navbar-brand").css({
                     'padding-top': '30px',
@@ -62,7 +58,7 @@ jQuery(function($) {
                     'border-bottom': '0px solid #ddd'
                 });
             }
-            $(".page").each(function() {
+            $(".page").each(function () {
                 var bb = $(this).attr("id");
                 var hei = $(this).outerHeight();
                 var grttop = $(this).offset().top - 80;
@@ -76,12 +72,12 @@ jQuery(function($) {
 
 
             /*
-            =========================================================================================
-            4. PROGRESS BAR
-            =========================================================================================
-            */
+             =========================================================================================
+             4. PROGRESS BAR
+             =========================================================================================
+             */
 
-            $(".prog_cint .tab-pane.fade .progress_cont").each(function() {
+            $(".prog_cint .tab-pane.fade .progress_cont").each(function () {
                 var base = $(this);
                 var windowHeight = $(window).height();
                 var itemPos = base.offset().top;
@@ -101,7 +97,7 @@ jQuery(function($) {
                         }, {
                             duration: 1500,
                             easing: 'linear',
-                            step: function() {
+                            step: function () {
                                 base.find(".skill>span").text(Math.ceil(this.countNumber) + "%");
                             }
                         });
@@ -112,14 +108,14 @@ jQuery(function($) {
     }());
 
 
-    (function() {
+    (function () {
 
         /*
-        =========================================================================================
-        5.NAV MENU FIX  
-        =========================================================================================
-        */
-        $(".navbar-nav>li>a,  .about_b").click(function() {
+         =========================================================================================
+         5.NAV MENU FIX  
+         =========================================================================================
+         */
+        $(".navbar-nav>li>a,  .about_b").click(function () {
             $(this).parent().addClass("active");
             $(".navbar-nav li a").not(this).parent().removeClass("active");
             var TargetId = $(this).attr('href');
@@ -132,41 +128,41 @@ jQuery(function($) {
 
 
         /*
-        =========================================================================================
-        6. FIX HOME SCREEN HEIGHT  
-        =========================================================================================
-        */
+         =========================================================================================
+         6. FIX HOME SCREEN HEIGHT  
+         =========================================================================================
+         */
 
-        setInterval(function() {
-                var widnowHeight = $(window).height();
-                var sliderHeight = $(".carousel-inner>.item").height();
-                var padTop = widnowHeight - sliderHeight;
-                $(".carousel-inner>.item").css({
-                    'padding-top': Math.round(padTop / 2) + 'px',
-                    'padding-bottom': Math.round(padTop / 2) + 'px'
-                });
-            }, 10);
+        setInterval(function () {
+            var widnowHeight = $(window).height();
+            var sliderHeight = $(".carousel-inner>.item").height();
+            var padTop = widnowHeight - sliderHeight;
+            $(".carousel-inner>.item").css({
+                'padding-top': Math.round(padTop / 2) + 'px',
+                'padding-bottom': Math.round(padTop / 2) + 'px'
+            });
+        }, 10);
 
 
-            $(".image_slider_src").each(function(){
+        $(".image_slider_src").each(function () {
 
             var imgurl = $(this).attr("src");
 
             $(this).parent().css({
 
-            "background" : "url("+imgurl+")"
+                "background": "url(" + imgurl + ")"
 
             });
 
 
-            });
+        });
 
 
         /*
-        =========================================================================================
-        7. FEATURED PROJECT 
-        =========================================================================================
-        */
+         =========================================================================================
+         7. FEATURED PROJECT 
+         =========================================================================================
+         */
 
         var owl = $(".fe_project");
         owl.owlCarousel({
@@ -181,10 +177,10 @@ jQuery(function($) {
 
 
         /*
-        =========================================================================================
-        8. TESTIMONIAL 
-        =========================================================================================
-        */
+         =========================================================================================
+         8. TESTIMONIAL 
+         =========================================================================================
+         */
 
         var clients_logo_owl = $(".qutoSilder");
         clients_logo_owl.owlCarousel({
@@ -200,10 +196,10 @@ jQuery(function($) {
 
 
         /*
-        =========================================================================================
-        9. PORTFOLIO SECTION
-        =========================================================================================
-        */
+         =========================================================================================
+         9. PORTFOLIO SECTION
+         =========================================================================================
+         */
 
         $("#second").bootFolio({
             bfLayout: "bflayhover",
@@ -222,10 +218,10 @@ jQuery(function($) {
 
 
         /*
-        =========================================================================================
-        10. PROCESS SECTION
-        =========================================================================================
-        */
+         =========================================================================================
+         10. PROCESS SECTION
+         =========================================================================================
+         */
 
         var clients_logo_owl = $(".process_slider");
         clients_logo_owl.owlCarousel({
@@ -240,10 +236,10 @@ jQuery(function($) {
 
 
         /*
-        =========================================================================================
-        11. TWITTER FEED 
-        =========================================================================================
-        */
+         =========================================================================================
+         11. TWITTER FEED 
+         =========================================================================================
+         */
 
         $('.tweet').twittie({
             dateFormat: '%b. %d, %Y',
@@ -252,9 +248,10 @@ jQuery(function($) {
             loadingText: 'Loading!'
         });
         //    TWITTER SLIDER   
-        var bb = setInterval(function() {
+        var bb = setInterval(function () {
             var bbb = $(".tweet").find('.tw_slider').text();
-            if (!bbb) {} else {
+            if (!bbb) {
+            } else {
                 clearInterval(bb);
                 $('.tw_slider').owlCarousel({
                     autoplay: true,
@@ -266,7 +263,7 @@ jQuery(function($) {
                     itemsTablet: [600, 1], //2 items between 600 and 0
                     itemsMobile: [480, 1]
                 });
-                $(".tw_slider .owl-dots .owl-dot").each(function() {
+                $(".tw_slider .owl-dots .owl-dot").each(function () {
                     $(this).find("span").text($(this).index() + 1);
                 });
             }
@@ -276,11 +273,11 @@ jQuery(function($) {
 
 
         /*
-        =========================================================================================
-        12. OUR CLENT  
-        =========================================================================================
-        */
-        
+         =========================================================================================
+         12. OUR CLENT  
+         =========================================================================================
+         */
+
         var clients_logo_owl = $(".clients_logo");
         clients_logo_owl.owlCarousel({
             pagination: false,
@@ -295,12 +292,12 @@ jQuery(function($) {
 
 
         /*
-        =========================================================================================
-        13. CONTACT  FORM VALIDATION   
-        =========================================================================================
-        */
+         =========================================================================================
+         13. CONTACT  FORM VALIDATION   
+         =========================================================================================
+         */
 
-        $("#Name").keyup(function() {
+        $("#Name").keyup(function () {
             "use strict";
             var value = $(this).val();
             if (value.length > 1) {
@@ -313,7 +310,7 @@ jQuery(function($) {
                 $(this).parent().append("<div class='error_message'>Name value should be at least 2</div>");
             }
         });
-        $("#Email").keyup(function() {
+        $("#Email").keyup(function () {
             "use strict";
             var value = $(this).val();
             var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
@@ -327,7 +324,7 @@ jQuery(function($) {
                 $(this).parent().append("<div class='error_message'>Please entire a valid email. </div>");
             }
         });
-        $("#contact_submit").click(function() {
+        $("#contact_submit").click(function () {
             "use strict";
             var nameValue = $("#Name").val();
             if (!nameValue.length) {
@@ -377,7 +374,7 @@ jQuery(function($) {
                         message: messageValue
                     },
                     type: 'POST',
-                    success: function(result) {
+                    success: function (result) {
                         "use strict";
                         $(".show_result").append("<div class='result_message'>" + result + "</div>");
                         $(".result_message").slideDown();
@@ -394,10 +391,10 @@ jQuery(function($) {
 
 
         /*
-        =========================================================================================
-        14. MAILCHIMP
-        =========================================================================================
-        */
+         =========================================================================================
+         14. MAILCHIMP
+         =========================================================================================
+         */
 
         $('#mc-form').ajaxChimp({
             url: "https://kutechx.us5.list-manage.com/subscribe/post?u=844ebbd89dd6911195e21dee5&amp;id=7a031b8255"
@@ -406,19 +403,19 @@ jQuery(function($) {
 
 
         /*
-        =========================================================================================
-        15. WOW JS
-        =========================================================================================
-        */
+         =========================================================================================
+         15. WOW JS
+         =========================================================================================
+         */
 
 
 
 
         /*
-        =========================================================================================
-        16. COUNTER
-        =========================================================================================
-        */
+         =========================================================================================
+         16. COUNTER
+         =========================================================================================
+         */
 
         $('.number>span').counterUp({
             delay: 10,
@@ -428,10 +425,10 @@ jQuery(function($) {
 
 
         /*
-        =========================================================================================
-        17. GOOGLE MAP
-        =========================================================================================
-        */
+         =========================================================================================
+         17. GOOGLE MAP
+         =========================================================================================
+         */
 
         google.maps.event.addDomListener(window, 'load', init);
 
@@ -441,91 +438,91 @@ jQuery(function($) {
                 zoom: 16,
                 center: new google.maps.LatLng(23.710551, 90.415643), // New York
                 styles: [{
-                    featureType: "landscape",
-                    stylers: [{
-                        saturation: -100
+                        featureType: "landscape",
+                        stylers: [{
+                                saturation: -100
+                            }, {
+                                lightness: 65
+                            }, {
+                                visibility: "on"
+                            }]
                     }, {
-                        lightness: 65
+                        featureType: "poi",
+                        stylers: [{
+                                saturation: -100
+                            }, {
+                                lightness: 51
+                            }, {
+                                visibility: "simplified"
+                            }]
                     }, {
-                        visibility: "on"
+                        featureType: "road.highway",
+                        stylers: [{
+                                saturation: -100
+                            }, {
+                                visibility: "simplified"
+                            }]
+                    }, {
+                        featureType: "road.arterial",
+                        stylers: [{
+                                saturation: -100
+                            }, {
+                                lightness: 30
+                            }, {
+                                visibility: "on"
+                            }]
+                    }, {
+                        featureType: "road.local",
+                        stylers: [{
+                                saturation: -100
+                            }, {
+                                lightness: 40
+                            }, {
+                                visibility: "on"
+                            }]
+                    }, {
+                        featureType: "transit",
+                        stylers: [{
+                                saturation: -100
+                            }, {
+                                visibility: "simplified"
+                            }]
+                    }, {
+                        featureType: "administrative.province",
+                        stylers: [{
+                                visibility: "off"
+                            }] /**/
+                    }, {
+                        featureType: "administrative.locality",
+                        stylers: [{
+                                visibility: "off"
+                            }]
+                    }, {
+                        featureType: "administrative.neighborhood",
+                        stylers: [{
+                                visibility: "on"
+                            }] /**/
+                    }, {
+                        featureType: "water",
+                        elementType: "labels",
+                        stylers: [{
+                                visibility: "on"
+                            }, {
+                                lightness: -25
+                            }, {
+                                saturation: -100
+                            }]
+                    }, {
+                        featureType: "water",
+                        elementType: "geometry",
+                        stylers: [{
+                                hue: "#ffff00"
+                            }, {
+                                lightness: -25
+                            }, {
+                                saturation: -97
+                            }]
                     }]
-                }, {
-                    featureType: "poi",
-                    stylers: [{
-                        saturation: -100
-                    }, {
-                        lightness: 51
-                    }, {
-                        visibility: "simplified"
-                    }]
-                }, {
-                    featureType: "road.highway",
-                    stylers: [{
-                        saturation: -100
-                    }, {
-                        visibility: "simplified"
-                    }]
-                }, {
-                    featureType: "road.arterial",
-                    stylers: [{
-                        saturation: -100
-                    }, {
-                        lightness: 30
-                    }, {
-                        visibility: "on"
-                    }]
-                }, {
-                    featureType: "road.local",
-                    stylers: [{
-                        saturation: -100
-                    }, {
-                        lightness: 40
-                    }, {
-                        visibility: "on"
-                    }]
-                }, {
-                    featureType: "transit",
-                    stylers: [{
-                        saturation: -100
-                    }, {
-                        visibility: "simplified"
-                    }]
-                }, {
-                    featureType: "administrative.province",
-                    stylers: [{
-                        visibility: "off"
-                    }] /**/
-                }, {
-                    featureType: "administrative.locality",
-                    stylers: [{
-                        visibility: "off"
-                    }]
-                }, {
-                    featureType: "administrative.neighborhood",
-                    stylers: [{
-                        visibility: "on"
-                    }] /**/
-                }, {
-                    featureType: "water",
-                    elementType: "labels",
-                    stylers: [{
-                        visibility: "on"
-                    }, {
-                        lightness: -25
-                    }, {
-                        saturation: -100
-                    }]
-                }, {
-                    featureType: "water",
-                    elementType: "geometry",
-                    stylers: [{
-                        hue: "#ffff00"
-                    }, {
-                        lightness: -25
-                    }, {
-                        saturation: -97
-                    }]
-                }]
             };
             var contentString = '<div id="mapcontent">' + '<p>Yup, we are here!</p></div>';
             var infowindow = new google.maps.InfoWindow({
@@ -535,23 +532,23 @@ jQuery(function($) {
             var mapElement = document.getElementById('map');
             var map = new google.maps.Map(mapElement, mapOptions);
             var image = new google.maps.MarkerImage('images/pin.png', null, null, null, new google.maps.Size(50, 71))
-            var myLatLng = new google.maps.LatLng(23.710551, 90.415643);
+            var myLatLng = new google.maps.LatLng(-25.295585, -57.587762);
             var marker = new google.maps.Marker({
                 position: myLatLng,
                 map: map,
                 icon: image,
-                title: 'Code Cafe'
+                title: 'Imagen Web'
             });
-            google.maps.event.addListener(marker, 'click', function() {
+            google.maps.event.addListener(marker, 'click', function () {
                 infowindow.open(map, marker);
             });
         }
-         /*
-        =========================================================================================
-        18. SINGLE PORTFOLIO
-        =========================================================================================
-        */
-               
+        /*
+         =========================================================================================
+         18. SINGLE PORTFOLIO
+         =========================================================================================
+         */
+
 
         var single_portfolio = $(".single_portfolio");
         single_portfolio.owlCarousel({
@@ -564,7 +561,7 @@ jQuery(function($) {
             itemsTablet: [600, 1], //2 items between 600 and 0
             itemsMobile: [480, 1]
         });
-        $(".single_portfolio .owl-dots .owl-dot").each(function() {
+        $(".single_portfolio .owl-dots .owl-dot").each(function () {
             $(this).find("span").text($(this).index() + 1);
         });
 

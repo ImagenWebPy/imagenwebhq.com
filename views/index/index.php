@@ -318,92 +318,91 @@
     </section>
     <!-- END BLOG-->
 <?php endif; ?>
-
-<!-- =========================
-     START SUBSCRIBE
-============================== -->
-<div class="subscribe_area parallax">
-    <div class="subscribe_area_overlay">
-        <div class="container  text-center">
-            <!-- SUBSCRIBE SECTION TITLE AND DESC -->
-            <div class="subscriber">
-                <h2>Get The Latest Update</h2>
-                <h4>Sign up to be the first to hear about us</h4>
-
-                <form role="form" id="mc-form">
-                    <label class="InputEmail1_lab" for="mce-EMAIL"></label>
-                    <input type="email" class="form-control required email" id="mce-EMAIL" value="Your Email" onfocus="if (this.value == this.defaultValue)
-                                this.value = '';" onblur="if (this.value == '')
-                                            this.value = this.defaultValue;">
-                    <button type="submit" class="btn btn-dm">SUBMIT</button>
-                </form>
+<?php if ($this->newsletter['estado'] == 1): ?>
+    <!-- =========================
+         START SUBSCRIBE
+    ============================== -->
+    <div class="subscribe_area parallax">
+        <div class="subscribe_area_overlay">
+            <div class="container  text-center">
+                <!-- SUBSCRIBE SECTION TITLE AND DESC -->
+                <div class="subscriber">
+                    <h2><?= utf8_encode($this->newsletter['titulo']); ?></h2>
+                    <h4><?= utf8_encode($this->newsletter['descripcion']); ?></h4>
+                    <form role="form" id="frmNewsletter">
+                        <label class="InputEmail1_lab" for="mce-EMAIL"></label>
+                        <input type="email" class="form-control required email" id="mce-EMAIL" value="<?= utf8_encode($this->newsletter['email']); ?>" onfocus="if (this.value == this.defaultValue)
+                                        this.value = '';" onblur="if (this.value == '')
+                                                    this.value = this.defaultValue;">
+                        <button type="submit" class="btn btn-dm"><?= utf8_encode($this->newsletter['boton']); ?></button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </div>        
-</div>
-<!-- END SUBSCRIBE-->
-<!-- =========================
-     START CONTACT
-============================== -->
-<section class="contact page type_one" id="CONTACT">
-    <div class="container ">
-        <div class="section_header">
-            <h2>Get In Touch</h2>
-            <p>Vestibulum at magna tellus. Vivamus sagittis et nunc ut aliquet. Vivamus porta ligula in orci aliquam, ac vulputate leo <br> vehicula. Mauris porttitor eros vel sapien semper vehicula. Donec eget ultricies ipsum, consequat rhoncus elit. </p>
-        </div>
+        </div>        
     </div>
-    <div class="container ">
-        <!-- START ADDRESS AND OTHER CONTACT INFORMATION -->
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="contact_wig">
-                    <h3><i class="fa pe-7s-call"></i> Phone</h3>
-                    <p>+92 444 6677 01
-                        <br> +92 555 6677 02</p>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="contact_wig">
-                    <h3><i class="fa pe-7s-mail"></i> Email</h3>
-                    <p>info@domain.com
-                        <br> personal@mail.com</p>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="contact_wig">
-                    <h3><i class="fa pe-7s-map-marker"></i> Contact </h3>
-                    <p>168 Kalushah Sharak
-                        <br> Barisal 8200</p>
-                </div>
+    <!-- END SUBSCRIBE-->
+<?php endif; ?>
+<?php if ($this->contacto['estado'] == 1): ?>
+    <!-- =========================
+         START CONTACT
+    ============================== -->
+    <section class="contact page type_one" id="contactanos">
+        <div class="container ">
+            <div class="section_header">
+                <h2><?= utf8_encode($this->contacto['titulo']); ?></h2>
+                <p><?= utf8_encode($this->contacto['contenido']); ?></p>
             </div>
         </div>
-        <!-- END ADDRESS AND OTHER CONTACT INFORMATION -->
-
-        <div class="show_result"></div>
-        <div class="result_message"></div>
-
-        <!-- CONTACT FORM -->
-        <form role="form">
+        <div class="container ">
+            <!-- START ADDRESS AND OTHER CONTACT INFORMATION -->
             <div class="row">
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="Name" placeholder="Name"> </div>
-                <div class="col-sm-4">
-                    <input type="email" class="form-control" id="Email" placeholder="Email"> </div>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="Phone" placeholder="Phone"> </div>
-                <div class="col-sm-12">
-                    <textarea class="form-control" rows="5" id="Message" placeholder="Message"></textarea>
+                    <div class="contact_wig">
+                        <h3><i class="fa pe-7s-call"></i> <?= utf8_encode($this->contacto['telefono']); ?></h3>
+                        <p><?= utf8_encode($this->contacto['datos_telefono']); ?></p>
+                    </div>
                 </div>
-                <div class="col-sm-12">
-                    <button type="button" id="contact_submit" class="btn btn-dm">Send Message</button>
+                <div class="col-sm-4">
+                    <div class="contact_wig">
+                        <h3><i class="fa pe-7s-mail"></i> <?= utf8_encode($this->contacto['email']); ?></h3>
+                        <p><?= utf8_encode($this->contacto['datos_email']); ?></p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="contact_wig">
+                        <h3><i class="fa pe-7s-map-marker"></i> <?= utf8_encode($this->contacto['contacto']); ?> </h3>
+                        <p><?= utf8_encode($this->contacto['datos_contacto']); ?></p>
+                    </div>
                 </div>
             </div>
-        </form>
-        <!-- END CONTACT FORM -->
-    </div>
+            <!-- END ADDRESS AND OTHER CONTACT INFORMATION -->
 
-    <!--START MAP-->
-    <div id="map"></div>
-    <!--END START MAP-->
-</section>
-<!-- END CONTACT-->
+            <div class="show_result"></div>
+            <div class="result_message"></div>
+
+            <!-- CONTACT FORM -->
+            <form role="form" id="frmContacto">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="nombre"  placeholder="<?= utf8_encode($this->contacto['input_nombre']); ?>"> </div>
+                    <div class="col-sm-4">
+                        <input type="email" class="form-control"  name="email" placeholder="<?= utf8_encode($this->contacto['input_email']); ?>"> </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="asunto" placeholder="<?= utf8_encode($this->contacto['input_asunto']); ?>"> </div>
+                    <div class="col-sm-12">
+                        <textarea class="form-control" rows="5" name="mensaje" placeholder="<?= utf8_encode($this->contacto['input_mensaje']); ?>"></textarea>
+                    </div>
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-dm"><?= utf8_encode($this->contacto['input_boton']); ?></button>
+                    </div>
+                </div>
+            </form>
+            <!-- END CONTACT FORM -->
+        </div>
+
+        <!--START MAP-->
+        <div id="map"></div>
+        <!--END START MAP-->
+    </section>
+    <!-- END CONTACT-->
+<?php endif; ?>

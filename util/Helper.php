@@ -834,4 +834,41 @@ class Helper {
         return $sql;
     }
 
+    public function cargar_newsletter($lng) {
+        $sql = $this->db->select("SELECT
+                                        " . $lng . "_titulo as titulo,
+                                        " . $lng . "_descripcion as descripcion,
+                                        " . $lng . "_input_email as email,
+                                        " . $lng . "_input_boton as boton,
+                                        estado
+                                FROM
+                                        `newsletter_seccion`
+                                WHERE
+                                        id = 1;");
+        return $sql[0];
+    }
+
+    public function cargar_contacto($lng) {
+        $sql = $this->db->select("SELECT
+                                        " . $lng . "_titulo as titulo,
+                                        " . $lng . "_contenido as contenido,
+                                        " . $lng . "_telefono as telefono,
+                                        " . $lng . "_email as email,
+                                        " . $lng . "_contacto as contacto,
+                                        " . $lng . "_input_nombre as input_nombre,
+                                        " . $lng . "_input_email as input_email,
+                                        " . $lng . "_input_asunto as input_asunto,
+                                        " . $lng . "_input_mensaje as input_mensaje,
+                                        " . $lng . "_boton input_boton,
+                                        datos_contacto,
+                                        datos_email,
+                                        datos_telefono,
+                                        estado
+                                FROM
+                                        `contacto_seccion`
+                                WHERE
+                                        id = 1;");
+        return $sql[0];
+    }
+
 }
