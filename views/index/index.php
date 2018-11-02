@@ -275,7 +275,7 @@
     <!-- =========================
          START BLOG
     ============================== -->
-    <section class="blog page type_one" id="BLOG">
+    <section class="blog page type_one" id="blog">
         <div class="container ">
             <!-- START BLOG TITLE AND DESC -->
             <div class="section_header">
