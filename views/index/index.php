@@ -1,22 +1,23 @@
 <!-- Home Slider Start -->
 <div class="slider">
     <div id="carousel-crafty-generic" class="carousel slide carousel-fade" data-ride="carousel">
-        <?php
-        foreach ($this->slider as $key => $slider):
-            $active = ($key == 0) ? 'active' : '';
-            ?>
-            <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner" role="listbox">
+            <?php
+            foreach ($this->slider as $key => $slider):
+                $active = ($key == 0) ? 'active' : '';
+                ?>
                 <div class="item <?= $active; ?>">
                     <img class="image_slider_src" src="<?= URL; ?>public/images/slider/<?= utf8_encode($slider['imagen']); ?>">
                     <div class="overlay"></div>
+
                     <div class="container">
                         <!-- 1 SLIDER TITLE AND DESC-->
                         <h1 class="bounceInDown"><?= utf8_encode($slider['titulo']); ?></h1>
                         <?= utf8_encode($slider['descripcion']); ?>
                     </div> 
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
         <!-- SLIDER CONTROL-->
         <a class="left carousel-control" href="#carousel-crafty-generic" role="button" data-slide="prev"></a>
         <a class="right carousel-control" href="#carousel-crafty-generic" role="button" data-slide="next"></a>
@@ -24,7 +25,7 @@
     <div class="container">
         <div class="down_btn">
             <!-- SCROLL DOWN -->
-            <a class="about_b" href="#ABOUT"><img class="floating" src="<?= URL; ?>public/images/down.png" alt=""></a>
+            <a class="about_b" href="#conocenos"><img class="floating" src="<?= URL; ?>public/images/down.png" alt=""></a>
         </div>
     </div>   
 
@@ -334,8 +335,8 @@
                     <form role="form" id="frmNewsletter">
                         <label class="InputEmail1_lab" for="mce-EMAIL"></label>
                         <input type="email" class="form-control required email" name="email_newsletter" value="<?= utf8_encode($this->newsletter['email']); ?>" onfocus="if (this.value == this.defaultValue)
-                                        this.value = '';" onblur="if (this.value == '')
-                                                    this.value = this.defaultValue;">
+                                    this.value = '';" onblur="if (this.value == '')
+                                                this.value = this.defaultValue;">
                         <button type="submit" class="btn btn-dm" id="btnRegistrarNewsletter"><?= utf8_encode($this->newsletter['boton']); ?></button>
                     </form>
                 </div>
