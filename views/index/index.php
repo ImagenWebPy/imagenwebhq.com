@@ -327,14 +327,16 @@
             <div class="container  text-center">
                 <!-- SUBSCRIBE SECTION TITLE AND DESC -->
                 <div class="subscriber">
+
                     <h2><?= utf8_encode($this->newsletter['titulo']); ?></h2>
                     <h4><?= utf8_encode($this->newsletter['descripcion']); ?></h4>
+                    <div class="resultadoNewsletter"></div>
                     <form role="form" id="frmNewsletter">
                         <label class="InputEmail1_lab" for="mce-EMAIL"></label>
-                        <input type="email" class="form-control required email" id="mce-EMAIL" value="<?= utf8_encode($this->newsletter['email']); ?>" onfocus="if (this.value == this.defaultValue)
+                        <input type="email" class="form-control required email" name="email_newsletter" value="<?= utf8_encode($this->newsletter['email']); ?>" onfocus="if (this.value == this.defaultValue)
                                         this.value = '';" onblur="if (this.value == '')
                                                     this.value = this.defaultValue;">
-                        <button type="submit" class="btn btn-dm"><?= utf8_encode($this->newsletter['boton']); ?></button>
+                        <button type="submit" class="btn btn-dm" id="btnRegistrarNewsletter"><?= utf8_encode($this->newsletter['boton']); ?></button>
                     </form>
                 </div>
             </div>
@@ -393,7 +395,7 @@
                         <textarea class="form-control" rows="5" name="mensaje" placeholder="<?= utf8_encode($this->contacto['input_mensaje']); ?>"></textarea>
                     </div>
                     <div class="col-sm-12">
-                        <button type="button" class="btn btn-dm"><?= utf8_encode($this->contacto['input_boton']); ?></button>
+                        <button type="submit" class="btn btn-dm" id="btnEnviarFormulario"><?= utf8_encode($this->contacto['input_boton']); ?></button>
                     </div>
                 </div>
             </form>

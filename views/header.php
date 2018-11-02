@@ -24,7 +24,7 @@
         <!-- ICON -->
         <link href="<?= URL; ?>public/css/pe-icon-7-stroke.css" rel="stylesheet">
         <!-- FAVICON -->
-        <link rel="shortcut icon" type="image/x-icon" href="<?= URL; ?>public/images/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="<?= URL; ?>public/images/favicon.png" />
         <!-- CUSTOM STYLE -->
         <link href="<?= URL; ?>public/css/style.css" rel="stylesheet">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

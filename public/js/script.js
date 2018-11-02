@@ -233,45 +233,6 @@ jQuery(function ($) {
             itemsMobile: [480, 1]
         });
 
-
-
-        /*
-         =========================================================================================
-         11. TWITTER FEED 
-         =========================================================================================
-         */
-
-        $('.tweet').twittie({
-            dateFormat: '%b. %d, %Y',
-            template: '{{tweet}} <span class="time">{{date}}</span>',
-            count: 5,
-            loadingText: 'Loading!'
-        });
-        //    TWITTER SLIDER   
-        var bb = setInterval(function () {
-            var bbb = $(".tweet").find('.tw_slider').text();
-            if (!bbb) {
-            } else {
-                clearInterval(bb);
-                $('.tw_slider').owlCarousel({
-                    autoplay: true,
-                    pagination: true,
-                    paginationNumbers: true,
-                    items: 1, //10 items above 1000px browser width
-                    itemsDesktop: [1000, 1], //5 items between 1000px and 901px
-                    itemsDesktopSmall: [900, 1], // betweem 900px and 601px
-                    itemsTablet: [600, 1], //2 items between 600 and 0
-                    itemsMobile: [480, 1]
-                });
-                $(".tw_slider .owl-dots .owl-dot").each(function () {
-                    $(this).find("span").text($(this).index() + 1);
-                });
-            }
-        }, 100);
-
-
-
-
         /*
          =========================================================================================
          12. OUR CLENT  
@@ -436,7 +397,7 @@ jQuery(function ($) {
             var mapOptions = {
                 scrollwheel: false,
                 zoom: 16,
-                center: new google.maps.LatLng(23.710551, 90.415643), // New York
+                center: new google.maps.LatLng(-25.295585, -57.587762), // New York
                 styles: [{
                         featureType: "landscape",
                         stylers: [{
@@ -531,7 +492,7 @@ jQuery(function ($) {
             });
             var mapElement = document.getElementById('map');
             var map = new google.maps.Map(mapElement, mapOptions);
-            var image = new google.maps.MarkerImage('images/pin.png', null, null, null, new google.maps.Size(50, 71))
+            var image = new google.maps.MarkerImage('public/images/pin.png', null, null, null, new google.maps.Size(50, 71))
             var myLatLng = new google.maps.LatLng(-25.295585, -57.587762);
             var marker = new google.maps.Marker({
                 position: myLatLng,

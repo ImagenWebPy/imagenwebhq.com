@@ -23,6 +23,20 @@ switch ($host) {
         define('DB_NAME', 'iweb');
         define('DB_HOST', 'localhost');
         break;
+    case 'imagenwebhq.com':
+        define('URL', 'https://www.imagenwebhq.com/v2/');
+        define('DB_USER', 'raulimag_usuario');
+        define('DB_PASS', 'MW9YTWdoSkpZekR3SS9GZGREc0ozY0JTVVVBdmxyV1BUZ1Q0TWVmbTJiRT0=');
+        define('DB_NAME', 'raulimag_web');
+        define('DB_HOST', 'localhost');
+        break;
+    case 'www.imagenwebhq.com':
+        define('URL', 'https://www.imagenwebhq.com/v2/');
+        define('DB_USER', 'raulimag_usuario');
+        define('DB_PASS', 'MW9YTWdoSkpZekR3SS9GZGREc0ozY0JTVVVBdmxyV1BUZ1Q0TWVmbTJiRT0=');
+        define('DB_NAME', 'raulimag_web');
+        define('DB_HOST', 'localhost');
+        break;
 }
 define('LIBS', 'libs/');
 
