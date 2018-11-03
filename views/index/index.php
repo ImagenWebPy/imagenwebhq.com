@@ -309,9 +309,9 @@
         <div class="container text-center">
             <div class="home-blog-btn">
                 <?php if ($this->idioma == 'en'): ?>
-                    <a class="crafty_btn" href="#">See all blog posts</a>
+                    <a class="crafty_btn" href="<?= URL . $this->idioma; ?>/blog/listado">See all blog posts</a>
                 <?php else: ?>
-                    <a class="crafty_btn" href="#">Ver Todas las Publicaciones</a>
+                    <a class="crafty_btn" href="<?= URL . $this->idioma; ?>/blog/listado">Ver Todas las Publicaciones</a>
                 <?php endif; ?>
             </div>
 

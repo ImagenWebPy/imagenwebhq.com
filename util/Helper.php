@@ -880,4 +880,11 @@ class Helper {
         return $url;
     }
 
+    public function armaUrl($id, $tabla, $campo, $lng) {
+        $sql = $this->db->select("select $campo from $tabla where id = $id");
+        $tituloBlog = $this->cleanUrl(utf8_encode($sql[0][$campo]));
+        $url = URL . $lng . "/blog/post/$id/" . $tituloBlog;
+        return $url;
+    }
+
 }

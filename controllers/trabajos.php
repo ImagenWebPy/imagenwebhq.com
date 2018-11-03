@@ -19,6 +19,7 @@ class Trabajos extends Controller {
         $this->view->menu = $this->helper->cargar_menu($lng, 0);
 
         $this->view->datos_trabajo = $this->model->datos_trabajo($id, $lng);
+        
         $this->view->title = SITE_TITLE;
         $this->view->description = '';
         $this->view->keywords = '';
