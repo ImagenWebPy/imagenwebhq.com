@@ -45,7 +45,7 @@ class Helper {
         $String = str_replace(")", "_", $String);
 
         $String = str_replace("'", "", $String);
-        //$String = str_replace(".", "_", $String);
+        $String = str_replace(".", "_", $String);
         $String = str_replace("#", "_", $String);
         $String = str_replace(" ", "_", $String);
         $String = str_replace("/", "_", $String);
@@ -719,7 +719,7 @@ class Helper {
      * FUNCIONES DEL INERENTES AL SITIO
      * ****************************** */
 
-    public function cargar_menu($lng) {
+    public function cargar_menu($lng, $index = 1) {
         $sql = $this->db->select("SELECT " . $lng . "_menu as menu, id_menu FROM menu where estado = 1 ORDER BY orden ASC;");
         return $sql;
     }
@@ -765,6 +765,7 @@ class Helper {
 
     public function cargar_trabajos($lng) {
         $sql = $this->db->select("SELECT
+                                        t.id,
                                         t.web,
                                         (select imagen_thumb from trabajos_img ti where ti.id_trabajos = t.id  and orden = 1 limit 1) as imagen
                                 FROM
@@ -777,6 +778,7 @@ class Helper {
 
     public function cargar_destacados($lng) {
         $sql = $this->db->select("SELECT
+                                        t.id,
                                         t.web,
                                         (select imagen_thumb from trabajos_img ti where ti.id_trabajos = t.id  and orden = 1 limit 1) as imagen
                                 FROM
@@ -869,6 +871,13 @@ class Helper {
                                 WHERE
                                         id = 1;");
         return $sql[0];
+    }
+
+    public function generaUrlTrabajo($id, $lng) {
+        $sql = $this->db->select("SELECT web FROM `trabajos` where id = 1;");
+        $texto = $this->cleanUrl(utf8_encode($sql[0]['web']));
+        $url = URL . $lng . '/trabajos/item/' . $id . '/' . $texto;
+        return $url;
     }
 
 }

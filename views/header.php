@@ -41,7 +41,6 @@
         </div>
 
 
-
         <!-- =========================
              START HEADER SECTION
         ============================== -->
@@ -60,7 +59,11 @@
                         <div class="collapse navbar-collapse" id="bs-crafty-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
                                 <?php foreach ($this->menu as $menu): ?>
-                                    <li><a href="#<?= $menu['id_menu']; ?>"><?= utf8_encode($menu['menu']) ?></a></li>
+                                    <?php if (empty($this->page)): ?>
+                                        <li><a href="#<?= $menu['id_menu']; ?>"><?= utf8_encode($menu['menu']) ?></a></li>
+                                    <?php else: ?>
+                                        <li><a href="<?= URL; ?>#<?= $menu['id_menu']; ?>"><?= utf8_encode($menu['menu']) ?></a></li>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </ul>
                         </div>

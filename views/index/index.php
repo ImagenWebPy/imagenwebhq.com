@@ -42,7 +42,7 @@
     <?php foreach ($this->destacados as $destacados): ?>
         <div class="fe_item">
             <div class="fe_pro_overlay">
-                <a href="#" data-rel="prettyPhoto"></a>
+                <a href="<?= $this->helper->generaUrlTrabajo($destacados['id'], $this->idioma); ?>"></a>
             </div> 
             <img src="<?= URL; ?>public/images/trabajos/thumb/<?= utf8_encode($destacados['imagen']); ?>" alt="<?= utf8_encode($destacados['web']); ?>"> 
         </div>
@@ -147,7 +147,7 @@
                         <div class="bf-single-item"> 
                             <img src="<?= URL; ?>public/images/trabajos/thumb/<?= utf8_encode($trabajos['imagen']); ?>" alt="<?= utf8_encode($trabajos['web']); ?>">
                             <div class="caption">
-                                <a href="#" target="_blank"></a>
+                                <a href="<?= $this->helper->generaUrlTrabajo($trabajos['id'], $this->idioma); ?>"></a>
                             </div>
                         </div>
                     </li>
@@ -335,8 +335,8 @@
                     <form role="form" id="frmNewsletter">
                         <label class="InputEmail1_lab" for="mce-EMAIL"></label>
                         <input type="email" class="form-control required email" name="email_newsletter" value="<?= utf8_encode($this->newsletter['email']); ?>" onfocus="if (this.value == this.defaultValue)
-                                    this.value = '';" onblur="if (this.value == '')
-                                                this.value = this.defaultValue;">
+                                        this.value = '';" onblur="if (this.value == '')
+                                                    this.value = this.defaultValue;">
                         <button type="submit" class="btn btn-dm" id="btnRegistrarNewsletter"><?= utf8_encode($this->newsletter['boton']); ?></button>
                     </form>
                 </div>

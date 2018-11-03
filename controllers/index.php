@@ -11,7 +11,9 @@ class Index extends Controller {
         $this->view->idioma = $lng;
         $this->view->page = $this->page;
 
+        $this->view->helper = $this->helper;
         $this->view->menu = $this->helper->cargar_menu($lng);
+        
         $this->view->slider = $this->helper->cargar_slider($lng);
         $this->view->destacados = $this->helper->cargar_destacados($lng);
         $this->view->conocenos = $this->helper->cargar_conocenos($lng);
