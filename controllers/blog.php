@@ -52,6 +52,10 @@ class Blog extends Controller {
         $id = $url[3];
         $this->view->post = $this->model->post($lng, $id);
 
+        $this->view->title = SITE_TITLE;
+        $this->view->description = '';
+        $this->view->keywords = '';
+
         $this->view->render('header');
         $this->view->render('blog/post');
         $this->view->render('footer');

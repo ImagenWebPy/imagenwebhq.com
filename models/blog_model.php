@@ -6,13 +6,13 @@ class Blog_Model extends Model {
         parent::__construct();
     }
 
-    public function header($lng) {
+    public function datos_encabezado($lng) {
         $sql = $this->db->select("SELECT
-                                        imagen_header as imagen,
+                                        imagen,
                                         " . $lng . "_titulo as titulo,
-                                        " . $lng . "_frase as frase
+                                        " . $lng . "_descripcion as descripcion
                                 FROM
-                                        `blog_header`
+                                        `blog_pagina_encabezado`
                                 WHERE id = 1;");
         return $sql[0];
     }
@@ -33,7 +33,7 @@ class Blog_Model extends Model {
         $sql = $this->db->select("SELECT
                                         id,
                                         " . $lng . "_titulo as titulo,
-                                        SUBSTR(" . $lng . "_contenido FROM 1 FOR 260) AS contenido,
+                                        SUBSTR(" . $lng . "_contenido FROM 1 FOR 400) AS contenido,
                                         DATE_FORMAT(fecha_blog, '%d') AS fecha_dia,
                                         DATE_FORMAT(fecha_blog, '%M-%Y') AS fecha,
                                         imagen_thumb as thumb,
@@ -99,12 +99,11 @@ class Blog_Model extends Model {
             $imagenHeader = utf8_encode($sql[0]['imagen_header']);
         } else {
             $cabecera = $this->dataHeader($lng);
-            $imagenHeader = utf8_encode($cabecera['imagen_header']);
+            $imagenHeader = utf8_encode($cabecera['imagen']);
         }
         $data = array(
             'titulo' => utf8_encode($sql[0]['titulo']),
             'contenido' => utf8_encode($sql[0]['contenido']),
-            'description' => substr(strip_tags(utf8_encode($sql[0]['contenido'])), 0, 300),
             'tags' => utf8_encode($sql[0]['tags']),
             'fecha_dia' => utf8_encode($sql[0]['fecha_dia']),
             'fecha' => utf8_encode($sql[0]['fecha']),
@@ -116,7 +115,7 @@ class Blog_Model extends Model {
     }
 
     public function dataHeader($lng) {
-        $sql = $this->db->select("SELECT imagen_header, " . $lng . "_header as titulo FROM blog_header;");
+        $sql = $this->db->select("SELECT imagen FROM blog_pagina_encabezado;");
         return $sql[0];
     }
 
