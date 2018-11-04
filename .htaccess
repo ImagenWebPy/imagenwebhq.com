@@ -35,8 +35,8 @@ RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC]
 RewriteRule .* - [F]
 
 #MVC RULES
-RewriteBase /imagenwebhq.com/
-#RewriteBase /
+#RewriteBase /imagenwebhq.com/
+RewriteBase /
 
 
 #forzamos redireccion https
