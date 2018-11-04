@@ -673,7 +673,7 @@ TESTIMONIAL
 
 .testmonial_cont {
     background-color: rgba(50, 95, 124, 0.22);
-    background-image: url(http://placehold.it/1920x1080);
+    background-image: url(../images/frases.jpg);
     /*background-size*/
     
     background-size: cover;
@@ -1213,7 +1213,7 @@ FUN FACTS
 -----------------------------------------*/
 
 .fact_number_cont {
-    background-image: url(http://placehold.it/1920x1080);
+    background-image: url(../images/velocidad.jpg);
     background-size: cover;
     background-position: center center;
 }
@@ -1833,7 +1833,7 @@ SUBSCRIBE
 -----------------------------------------*/    
 
 .subscribe_area{
-    background-image: url(http://placehold.it/1920x1080);
+    background-image: url(../images/suscribirse.jpg);
     background-size: cover;
     background-position: center;
 }

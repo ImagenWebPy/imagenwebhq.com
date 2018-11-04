@@ -884,7 +884,7 @@ class Helper {
     }
 
     public function generaUrlTrabajo($id, $lng) {
-        $sql = $this->db->select("SELECT web FROM `trabajos` where id = 1;");
+        $sql = $this->db->select("SELECT web FROM `trabajos` where id = $id;");
         $texto = $this->cleanUrl(utf8_encode($sql[0]['web']));
         $url = URL . $lng . '/trabajos/item/' . $id . '/' . $texto;
         return $url;
