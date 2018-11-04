@@ -33,6 +33,18 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-22820445-4"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-22820445-4');
+        </script>
+
     </head>
 
     <body>
@@ -63,8 +75,8 @@
                                         <li><a href="#<?= $menu['id_menu']; ?>"><?= utf8_encode($menu['menu']) ?></a></li>
                                     <?php else: ?>
                                         <li><a href="<?= URL; ?>#<?= $menu['id_menu']; ?>"><?= utf8_encode($menu['menu']) ?></a></li>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
+    <?php endif; ?>
+<?php endforeach; ?>
                             </ul>
                         </div>
                     </div>
