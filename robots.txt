@@ -1,0 +1,11 @@
+# Regla
+User-agent: *
+Allow: /
+
+User-agent: *
+Disallow: /nbproject/
+
+User-agent: *
+Disallow: /controllers/
+
+Sitemap: https://www.imagenwebhq.com/sitemap.xml

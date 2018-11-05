@@ -837,10 +837,10 @@ class Helper {
         $campo = $lng . '_titulo';
         foreach ($sql as $item) {
             array_push($data, array(
-                'titulo' => utf8_encode($sql[0]['titulo']),
-                'contenido' => utf8_encode($sql[0]['contenido']),
-                'imagen' => utf8_encode($sql[0]['imagen']),
-                'url' => $this->armaUrl($sql[0]['id'], 'blog', $campo, $lng),
+                'titulo' => utf8_encode($item['titulo']),
+                'contenido' => utf8_encode($item['contenido']),
+                'imagen' => utf8_encode($item['imagen']),
+                'url' => $this->armaUrl($item['id'], 'blog', $campo, $lng),
             ));
         }
         return $data;
