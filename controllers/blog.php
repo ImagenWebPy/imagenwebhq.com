@@ -26,9 +26,11 @@ class Blog extends Controller {
         $this->view->listado = $this->model->listado($lng, $pagina);
 
         $this->view->datos_encabezado = $this->model->datos_encabezado($lng);
-        $this->view->title = SITE_TITLE;
-        $this->view->description = '';
-        $this->view->keywords = '';
+
+        $metas = $this->helper->cargar_metatags($lng, 2);
+        $this->view->title = SITE_TITLE . $metas['title'];
+        $this->view->description = $metas['description'];
+        $this->view->keywords = $metas['keywords'];
 
         $this->view->render('header');
         $this->view->render('blog/listado');
@@ -52,9 +54,9 @@ class Blog extends Controller {
         $id = $url[3];
         $this->view->post = $this->model->post($lng, $id);
 
-        $this->view->title = SITE_TITLE;
-        $this->view->description = '';
-        $this->view->keywords = '';
+        $this->view->title = SITE_TITLE . $this->view->post['titulo'];
+        $this->view->description = $this->view->post['resumen'];
+        $this->view->keywords = $this->view->post['tags'];
 
         $this->view->render('header');
         $this->view->render('blog/post');

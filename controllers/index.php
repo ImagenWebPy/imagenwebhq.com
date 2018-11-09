@@ -13,7 +13,7 @@ class Index extends Controller {
 
         $this->view->helper = $this->helper;
         $this->view->menu = $this->helper->cargar_menu($lng);
-        
+
         $this->view->slider = $this->helper->cargar_slider($lng);
         $this->view->destacados = $this->helper->cargar_destacados($lng);
         $this->view->conocenos = $this->helper->cargar_conocenos($lng);
@@ -29,9 +29,11 @@ class Index extends Controller {
         $this->view->blog = $this->helper->cargar_blog($lng);
         $this->view->newsletter = $this->helper->cargar_newsletter($lng);
         $this->view->contacto = $this->helper->cargar_contacto($lng);
-        $this->view->title = SITE_TITLE;
-        $this->view->description = '';
-        $this->view->keywords = '';
+
+        $metas = $this->helper->cargar_metatags($lng,1);
+        $this->view->title = SITE_TITLE . $metas['title'];
+        $this->view->description = $metas['description'];
+        $this->view->keywords = $metas['keywords'];
 
         $this->view->render('header');
         $this->view->render('index/index');

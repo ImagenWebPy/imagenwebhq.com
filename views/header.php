@@ -65,7 +65,7 @@
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-crafty-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                            <a class="navbar-brand" href="index.html"><img src="<?= URL; ?>public/images/logo.png" alt="logo"> </a>
+                            <a class="navbar-brand" href="<?= URL; ?>"><img src="<?= URL; ?>public/images/logo.png" alt="logo"> </a>
                         </div>
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-crafty-navbar-collapse-1">
@@ -75,8 +75,8 @@
                                         <li><a href="#<?= $menu['id_menu']; ?>"><?= utf8_encode($menu['menu']) ?></a></li>
                                     <?php else: ?>
                                         <li><a href="<?= URL; ?>#<?= $menu['id_menu']; ?>"><?= utf8_encode($menu['menu']) ?></a></li>
-    <?php endif; ?>
-<?php endforeach; ?>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </div>

@@ -897,4 +897,14 @@ class Helper {
         return $url;
     }
 
+    public function cargar_metatags($lng,$id) {
+        $sql = $this->db->select("SELECT " . $lng . "_title as title, " . $lng . "_description as description, " . $lng . "_keywords as keywords FROM `metatag` where id = $id;");
+        $data = array(
+            'title' => utf8_encode($sql[0]['title']),
+            'description' => utf8_encode($sql[0]['description']),
+            'keywords' => utf8_encode($sql[0]['keywords'])
+        );
+        return $data;
+    }
+
 }

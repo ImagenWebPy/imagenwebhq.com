@@ -85,6 +85,7 @@ class Blog_Model extends Model {
         $sql = $this->db->select("SELECT
                                         " . $lng . "_titulo as titulo,
                                         " . $lng . "_contenido as contenido,
+                                        SUBSTR(" . $lng . "_contenido FROM 1 FOR 300) AS resumen,
                                         DATE_FORMAT(fecha_blog, '%d') AS fecha_dia,
                                         DATE_FORMAT(fecha_blog, '%M-%Y') AS fecha,
                                         imagen,
@@ -104,6 +105,7 @@ class Blog_Model extends Model {
         $data = array(
             'titulo' => utf8_encode($sql[0]['titulo']),
             'contenido' => utf8_encode($sql[0]['contenido']),
+            'resumen' => utf8_encode($sql[0]['resumen']),
             'tags' => utf8_encode($sql[0]['tags']),
             'fecha_dia' => utf8_encode($sql[0]['fecha_dia']),
             'fecha' => utf8_encode($sql[0]['fecha']),
